@@ -44,7 +44,9 @@ function App() {
     if (over?.id === 'one') {
       setFirstCirculero(circuleros.filter(item => item.id === active.id)[0])
     }
-    if (over?.id !== 'users') {
+    if (over && over?.id !== 'users' ) {
+      console.log('over ',over);
+      console.log('ejecuta');
       setCirculeros(circuleros.filter(item => item.id !== active.id))
     }
 
@@ -69,7 +71,7 @@ function App() {
 
     <main className="grid min-h-screen bg-slate-900 place-items-center">
       <div className="container flex flex-col items-center justify-center w-full max-w-5xl gap-4 p-8 rounded-lg md:flex-row bg-slate-300">
-        <DndContext sensors={sensors} autoScroll={false} collisionDetection={closestCenter} onDragEnd={drawEnd} >
+        <DndContext sensors={sensors}  autoScroll={false} collisionDetection={closestCenter} onDragEnd={drawEnd} >
           <div className="flex flex-row w-full md:max-w-[200px] gap-8 md:flex-col ">
 
             <div className="w-full  min-w-[100px] border-blue-400 aspect-square">
