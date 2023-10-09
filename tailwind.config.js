@@ -5,8 +5,17 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        montana: 'url(/images/backgrounds/montana/image.jpg)',
+      },
+      colors: {
+        'c-cyan': '#00FFEC'
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+    'tailwindcss-animated'
+  ],
 }
 
