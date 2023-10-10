@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -12,7 +13,8 @@ export default {
       colors: {
         'c-cyan': '#00FFEC',
         'c-yellow': '#F3FF00',
-        'c-magenta': '#FF4DCD'
+        'c-magenta': '#FF4DCD',
+        'c-purple': '#351360',
       },
       fontFamily: {
         'rubik': ['Rubik', 'sans-serif']
@@ -20,7 +22,7 @@ export default {
     },
   },
   plugins: [
-    'tailwindcss-animated'
+    require('tailwindcss-animated')
   ],
 }
 
