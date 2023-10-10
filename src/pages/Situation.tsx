@@ -6,6 +6,7 @@ import { Pagination } from 'swiper';
 import 'swiper/css';
 import "swiper/css/pagination";
 import { useMediaQuery } from '../hooks/useMediaQuery';
+import useTransition from '../hooks/useTransition';
 
 
 
@@ -17,10 +18,17 @@ const Situation = () => {
     { title: 'Marketing', image: '/images/icons/M.png', description: 'Planificación de 3 campañas para posicionar el hashtag #ElegíFelicidad' },
     { title: 'Web', image: '/images/icons/W.png', description: 'Desarrollo de una landing promocional con premios, conectada a un administrador para validar a los participantes.' }]
 
- const isDesktop = useMediaQuery('(min-width: 768px)')
+  const isDesktop = useMediaQuery('(min-width: 768px)')
+
+  const { handletransition } = useTransition()
+
+  const handleRoute = (route: string) => {
+    handletransition(route)
+  }
+
   return (
 
-    <section className="flex items-center justify-center w-full h-full pt-24 md:pt-0" style={{ viewTransitionName: 'view', background: 'linear-gradient(90deg, rgba(145, 83, 197, 0.50) 0%, rgba(53, 19, 96, 0.50) 99.99%)' }} >
+    <section className="flex items-center justify-center w-full h-full pt-16 md:pt-4" style={{ viewTransitionName: 'view', background: 'linear-gradient(90deg, rgba(145, 83, 197, 0.50) 0%, rgba(53, 19, 96, 0.50) 99.99%)' }} >
       <div className="container flex flex-col items-center justify-center gap-4 p-4 text-center ">
         <h2 className="text-xl tracking-wide uppercase text-c-yellow">
           BUENAS NOTICIAS:
@@ -31,7 +39,7 @@ const Situation = () => {
         {
 
           isDesktop ? (
-            <div className="z-30 hidden gap-10 p-4 mx-auto mt-16 xl:gap-20 md:grid md:grid-cols-3">
+            <div className="z-30 hidden gap-10 p-4 mx-auto mt-10 xl:gap-20 md:grid md:grid-cols-3">
               {
                 items.map((item, index) => (
                   <div key={index} className="relative max-w-xs p-8 bg-white md:max-w-sm before:w-full before:h-full before:absolute before:bg-c-magenta before:-z-10 before:-left-4 before:top-4">
@@ -68,6 +76,8 @@ const Situation = () => {
             </Swiper>
 
         }
+
+        <button onClick={() => handleRoute('/situation')} className="px-4 py-2 mt-2 text-lg font-bold text-black uppercase transition-transform rounded-md lg:mt-8 hover:scale-105 bg-c-yellow">Iniciar</button>
 
       </div>
     </section>
