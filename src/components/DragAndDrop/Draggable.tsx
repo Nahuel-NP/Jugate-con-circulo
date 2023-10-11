@@ -31,11 +31,11 @@ export const Draggable = ({ id, circulero, disabled = false }: Props) => {
     <div ref={setNodeRef} style={style}  {...listeners} {...attributes} className='flex max-w-[100px] z-50 items-center justify-center w-full overflow-hidden rounded-full  cursor-grab aspect-square'>
       {disabled
         ?
-        <div className='w-full text-center cursor-not-allowed'>
-          <p className='text-xs bg-red-500 select-none md:text-base'>{circulero?.name}</p>
+        <div className='flex items-center w-full h-full text-center border-4 rounded-full cursor-not-allowed border-c-cyan'>
+          <p className='text-xs text-white select-none md:text-base'>{circulero?.name}</p>
         </div>
         :
-        <div className='w-full p-1 md:p-2 bg-gradient-to-r from-c-cyan to-c-purple'>
+        <div className='w-full p-1 md:p-[6px] bg-gradient-to-r from-c-cyan to-c-purple'>
           <img className='rounded-full' src={`/images/circuleros/${circulero?.image ? circulero.image : 'no-profile'}.jpg`} alt={circulero?.name} />
         </div>}
     </div>

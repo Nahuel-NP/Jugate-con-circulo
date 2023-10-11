@@ -13,7 +13,7 @@ export function Droppable(props: Props) {
 
 
   return (
-    <div ref={setNodeRef} className='relative flex items-center justify-center w-full h-full p-4'>
+    <div ref={setNodeRef} className='relative flex items-center justify-center w-full h-full '>
       {props.children}
       {isOver && <div className='absolute top-0 left-0 w-full h-full opacity-50 bg-c-purple'></div>}
     </div>
