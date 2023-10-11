@@ -1,5 +1,5 @@
 export interface Circulero {
-  id?: number,
+  id: number,
   name: string,
   image: string,
   roles: string[]
@@ -147,7 +147,7 @@ export const circuleros: Circulero[] = [
       "IT"
     ]
   },
-  { id:21,
+/*   { id:21,
     name: "Olivello Aldana",
     image: "img-aldi",
     roles: [
@@ -314,5 +314,5 @@ export const circuleros: Circulero[] = [
     roles: [
       "AUDIOVISUAL"
     ]
-  }
+  } */
 ]
