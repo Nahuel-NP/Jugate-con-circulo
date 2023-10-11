@@ -5,8 +5,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 import 'swiper/css';
 import "swiper/css/pagination";
-import { useMediaQuery } from '../hooks/useMediaQuery';
+
 import useTransition from '../hooks/useTransition';
+import { useMediaQuery } from '../hooks/useMediaQuery';
+
 
 
 
