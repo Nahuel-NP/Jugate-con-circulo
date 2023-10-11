@@ -12,11 +12,11 @@ export function Droppable(props: Props) {
   });
   const style = {
     /* opacity: isOver ? 1 : 0.5, */
-    border: isOver ? '2px solid red' : '2px solid #ccc',
+    border: isOver ? '2px solid red' : '',
   };
 
   return (
-    <div ref={setNodeRef} style={style} className='w-full h-full'>
+    <div ref={setNodeRef} style={style} className='flex items-center justify-center w-full h-full p-4'>
       {props.children}
     </div>
   );
