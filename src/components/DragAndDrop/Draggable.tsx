@@ -32,7 +32,7 @@ export const Draggable = ({ id, circulero, disabled = false }: Props) => {
       {disabled
         ?
         <div className='flex items-center justify-center w-full h-full text-center border-4 rounded-full cursor-not-allowed border-c-cyan'>
-          <p className='text-[10px] leading-[12px] text-white select-none sm:text-xs uppercase '>{circulero?.name}</p>
+          <p className='text-[10px] leading-[12px] px-2 text-white select-none sm:text-xs uppercase '>{circulero?.name}</p>
         </div>
         :
         <div className='w-full p-1 md:p-[6px] bg-gradient-to-r from-c-cyan to-c-purple'>
