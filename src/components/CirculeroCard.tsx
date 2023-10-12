@@ -7,11 +7,11 @@ interface Props{
 
 const CirculeroCard = ({circulero ,rol}:Props) => {
   return (
-    <div className="flex w-full">
+    <div className="flex items-center w-full">
       <img src={`/images/circuleros/${circulero.image ? circulero.image : 'no-profile'}.jpg`} className="w-[100px] h-[100px] rounded-full" alt="" />
-      <div className="w-full">
-        <h3>{rol}</h3>
-        <p>{circulero.name}</p>
+      <div className="grid w-full gap-2 px-4">
+        <h3 className="text-xl ">{rol}</h3>
+        <p className="text-lg font-bold uppercase">{circulero.name}</p>
       </div>
     </div>
   );
