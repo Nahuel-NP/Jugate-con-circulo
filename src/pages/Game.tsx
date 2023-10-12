@@ -78,14 +78,14 @@ const Game = () => {
       <div className="container px-8 py-4 md:mt-14">
         <DndContext sensors={sensors} autoScroll={false} collisionDetection={closestCenter} onDragEnd={drawEnd}>
 
-          <div className="grid max-w-6xl gap-4 mx-auto text-sm xl:pb-10 lg:gap-8 xl:gap-y-12 lg:grid-cols-5">
-            <div className=" lg:col-start-1 lg:col-span-2   min-h-[150px] max-w-sm  mx-auto md:max-w-sm ">{/* seleccion 1 */}
+          <div className="grid justify-center max-w-6xl gap-4 mx-auto text-sm xl:pb-10 lg:gap-8 xl:gap-y-12 lg:grid-cols-5">
+            <div className=" lg:col-start-1 lg:col-span-2   min-h-[150px] max-w-sm   md:max-w-sm ">{/* seleccion 1 */}
               <Droppable id="first" >
 
                 {
                   selectedCirculero.firstCirculero ?
                     <div className="relative flex items-center justify-center w-full h-full p-4 bg-white before:w-full before:h-full before:absolute before:bg-c-magenta before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
-                      <CirculeroCard circulero={selectedCirculero.firstCirculero} rol="Cuentas" />
+                      <CirculeroCard circulero={selectedCirculero.firstCirculero} rol="DP" />
                     </div>
                     :
                     <div className="relative flex items-center justify-center w-full h-full p-4 bg-c-magenta before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
@@ -95,7 +95,7 @@ const Game = () => {
                 }
               </Droppable>
             </div>
-            <div className="lg:col-start-3 lg:row-span-2 lg:col-span-3">
+            <div className=" lg:col-start-3 lg:row-span-2 lg:col-span-3">
               <Droppable id="grid">
                 <div className="grid max-w-sm grid-cols-5 gap-2 lg:max-w-lg xl:max-w-2xl">
                   {circuleros.map(item => (
@@ -104,7 +104,7 @@ const Game = () => {
                 </div>
               </Droppable>
             </div>
-            <div className=" lg:col-start-1  lg:col-span-2 relative min-h-[150px] max-w-sm  mx-auto md:max-w-sm before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">{/* seleccion 2 */}
+            <div className=" lg:col-start-1  lg:col-span-2 relative min-h-[150px] max-w-sm   md:max-w-sm before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">{/* seleccion 2 */}
               <Droppable id="second" >
                 {
                   selectedCirculero.secondCirculero ?
@@ -113,7 +113,8 @@ const Game = () => {
                     </div>
                     :
                     <div className="relative flex items-center justify-center w-full h-full p-4 bg-c-cyan before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
-                      <p className="text-black">Un/a DP se encarga de dirigir la estrategia general del proyecto. Es responsable de armar el equipo, crear la propuesta y darle seguimiento a los avances.
+                      <p className="text-black">
+                      Un/a CUENTAS es su mano derecha. Acompaña en la organización interna y en la comunicación con el cliente para solicitar información.
                       </p>
                     </div>
                 }
