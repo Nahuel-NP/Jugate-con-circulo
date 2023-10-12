@@ -30,7 +30,7 @@ const Situation = () => {
 
   return (
 
-    <section className="flex items-center justify-center w-full min-h-screen p-16 md:pt-4 saturate-150" style={{ viewTransitionName: 'view', background: 'linear-gradient(90deg, rgba(145, 83, 197, 0.50) 0%, rgba(53, 19, 96, 0.50) 99.99%)' }} >
+    <section className="flex items-center justify-center w-full min-h-screen py-16 md:pt-4 saturate-150" style={{ viewTransitionName: 'view', background: 'linear-gradient(90deg, rgba(145, 83, 197, 0.50) 0%, rgba(53, 19, 96, 0.50) 99.99%)' }} >
       <div className="container flex flex-col items-center justify-center gap-4 p-4 text-center ">
         <h2 className="text-xl tracking-wide uppercase text-c-yellow">
           BUENAS NOTICIAS:
