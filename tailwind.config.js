@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        montana: 'url(/images/backgrounds/montana/image.jpg)',
+        montana: 'url(/images/backgrounds/montana/image.webp)',
       },
       colors: {
         'c-cyan': '#00FFEC',
