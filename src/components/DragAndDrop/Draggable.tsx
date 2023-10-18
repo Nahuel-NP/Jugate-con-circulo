@@ -24,6 +24,7 @@ export const Draggable = ({ id, circulero, disabled = false }: Props) => {
   const style = {
     // Outputs `translate3d(x, y, 0)`
     opacity: isDragging ? 1 : 0.9,
+    zIndex: isDragging ? 100 : 70,
     transform: CSS.Translate.toString(transform),
   };
 
@@ -35,7 +36,7 @@ export const Draggable = ({ id, circulero, disabled = false }: Props) => {
           <p className='text-[10px] leading-[12px] px-2 text-white select-none sm:text-xs uppercase '>{circulero?.name}</p>
         </div>
         :
-        <div className='w-full p-1 md:p-[6px] bg-gradient-to-r from-c-cyan to-c-purple'>
+        <div className='w-full p-1 md:p-[6px] bg-white'>
           <img className='rounded-full' src={`/images/circuleros/${circulero?.image ? circulero.image : 'no-profile'}.jpg`} alt={circulero?.name} />
         </div>}
     </div>
