@@ -39,11 +39,8 @@ const Game = () => {
   const drawEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
-    console.log({ active });
     const circuleroToAdd = circuleros.filter(item => item.id.toString() === active.id)[0]
 
-
-    console.log(circuleroToAdd);
     if (over?.id === 'first') {
       addCirculero('first', circuleroToAdd)
     }
@@ -63,18 +60,8 @@ const Game = () => {
     }
   }
 
-/*   const removeCirculero = (position: string) => {
-    if (position == 'first') {
-      setSelectedCirculero({ ...selectedCirculero, firstCirculero: null })
-    }
-    if (position == 'second') {
-      setSelectedCirculero({ ...selectedCirculero, secondCirculero: null })
-    }
-  } */
-
-
   return (
-    < section className="z-50 flex items-center justify-center w-full min-h-screen py-16 lg:p-8 md:pt-4 saturate-150" style={{ viewTransitionName: 'view', background: 'linear-gradient(90deg, rgba(53, 19, 96, 0.50) 0%, rgba(29, 183, 179, 0.50) 100%)' }}>
+    < section className="z-50 flex items-center justify-center w-full min-h-screen py-24 lg:p-8 md:pt-4 saturate-150" style={{ viewTransitionName: 'view', background: 'linear-gradient(90deg, rgba(53, 19, 96, 0.50) 0%, rgba(29, 183, 179, 0.50) 100%)' }}>
       <div className="container px-8 py-4 md:mt-14">
         <DndContext sensors={sensors} autoScroll={false} collisionDetection={closestCenter} onDragEnd={drawEnd}>
 
