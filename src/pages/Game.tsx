@@ -21,14 +21,14 @@ const Game = () => {
   /* const modal = useModalStore((state) => (state.isOpen)) */
 
   useEffect(() => {
-    const hasModalBeenShown = localStorage.getItem('modalShown');
+    const hasModalBeenShown = sessionStorage.getItem('modalShown');
 
     if (!hasModalBeenShown) {
       setTimeout(()=>{
 
         setModal(true);
       },3000)
-      localStorage.setItem('modalShown', 'true');
+      sessionStorage.setItem('modalShown', 'true');
     }
   }, [setModal]);
 
