@@ -77,7 +77,7 @@ const Situation = () => {
 
         }
 
-        <button onClick={() => handleRoute('/game')} className="px-4 py-2 mt-2 text-lg font-bold text-black uppercase transition-transform rounded-md lg:mt-8 hover:scale-105 bg-c-yellow">Continuar</button>
+        <button onClick={() => handleRoute('/game')} className="px-6 py-2 mt-2 text-lg font-bold text-black transition-transform rounded-full lg:mt-8 hover:scale-105 bg-c-yellow">Perfecto</button>
 
       </div>
     </section>

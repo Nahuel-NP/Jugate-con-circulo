@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSensor, MouseSensor, TouchSensor, useSensors, DragEndEvent, DndContext, closestCenter } from '@dnd-kit/core';
 import { Circulero, circuleros } from '../data/circuleros';
 import { Droppable } from "../components/DragAndDrop/Droppable";
 import { Draggable } from "../components/DragAndDrop/Draggable";
 import CirculeroCard from "../components/CirculeroCard";
+import { useModalStore } from "../store/modalStore";
 
 
 
@@ -16,6 +17,20 @@ const Game = () => {
 
   /* const [overlay,setOverlay] = useState(false); */
 
+  const setModal = useModalStore((state) => (state.setIsOpen))
+  /* const modal = useModalStore((state) => (state.isOpen)) */
+
+  useEffect(() => {
+    const hasModalBeenShown = localStorage.getItem('modalShown');
+
+    if (!hasModalBeenShown) {
+      setTimeout(()=>{
+
+        setModal(true);
+      },3000)
+      localStorage.setItem('modalShown', 'true');
+    }
+  }, [setModal]);
 
   const mouseSensor = useSensor(MouseSensor);
   const touchSensor = useSensor(TouchSensor);
@@ -101,7 +116,7 @@ const Game = () => {
                     :
                     <div className="relative flex items-center justify-center w-full h-full p-4 bg-c-cyan before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
                       <p className="text-black">
-                      Un/a CUENTAS es su mano derecha. Acompaña en la organización interna y en la comunicación con el cliente para solicitar información.
+                        Un/a CUENTAS es su mano derecha. Acompaña en la organización interna y en la comunicación con el cliente para solicitar información.
                       </p>
                     </div>
                 }
