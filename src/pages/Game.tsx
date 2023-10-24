@@ -104,7 +104,7 @@ const Game = () => {
     increment()
   }
   return (
-    < section className="z-50 flex flex-col items-center w-full min-h-screen py-24 lg:pt-24 md:pt-4 saturate-150" style={{ viewTransitionName: 'view', background: 'linear-gradient(90deg, rgba(53, 19, 96, 0.50) 0%, rgba(29, 183, 179, 0.50) 100%)' }}>
+    < section className="z-50 flex flex-col items-center w-full min-h-screen py-24 lg:pt-24 md:pt-12 saturate-150" style={{ viewTransitionName: 'view', background: 'linear-gradient(90deg, rgba(53, 19, 96, 0.50) 0%, rgba(29, 183, 179, 0.50) 100%)' }}>
       <div className="container px-8 py-4 md:mt-14">
         <DndContext sensors={sensors} autoScroll={false} collisionDetection={closestCenter} onDragEnd={drawEnd}>
 
