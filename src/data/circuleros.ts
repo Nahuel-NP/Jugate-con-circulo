@@ -3,15 +3,16 @@ export interface Circulero {
   name: string,
   apodo: string,
   image: string,
-  roles: Array<
-  "Audiovisualista"
-  | "DP" 
-  | "Fotógrafo" 
-  | "Redactor" 
-  | "Cuentas" 
-  | "Desarrollador IT" 
-  | "Diseñador/a IT" 
-  | "Planner IT" 
+  roles: Array<Rol>
+}
+type Rol = "Audiovisualista"
+  | "DP"
+  | "Fotógrafo"
+  | "Redactor"
+  | "Cuentas"
+  | "Desarrollador IT"
+  | "Diseñador/a IT"
+  | "Planner IT"
   | "Planner"
   | "Planner de Pauta"
   | "Administrativo/a"
@@ -23,8 +24,8 @@ export interface Circulero {
   | "de Recursos Humanos"
   | "Socio"
   | "Diseñador/a"
-  | "Director/a de Creatividad">
-}
+  | "Director/a de Creatividad"
+  | "Director general Creativo"
 
 
 
@@ -71,7 +72,7 @@ export const circuleros: Circulero[] = [
     apodo: "Gonza",
     image: "img-gonza",
     roles: [
-      "Desarrollador IT","Diseñador/a"
+      "Desarrollador IT", "Diseñador/a"
     ]
   },
   {
@@ -89,7 +90,7 @@ export const circuleros: Circulero[] = [
     apodo: "Ivette",
     image: "",
     roles: [
-      "Cuentas","Diseñador/a"
+      "Cuentas", "Diseñador/a"
     ]
   },
   {
@@ -197,7 +198,7 @@ export const circuleros: Circulero[] = [
     apodo: "Roy",
     image: "img-roy",
     roles: [
-      "DP","Diseñador/a"
+      "DP", "Diseñador/a"
     ]
   },
   {
@@ -206,7 +207,7 @@ export const circuleros: Circulero[] = [
     apodo: "Pablo",
     image: "img-pablo",
     roles: [
-      "Planner IT","Desarrollador IT"
+      "Planner IT", "Desarrollador IT"
     ]
   },
   {
@@ -233,7 +234,7 @@ export const circuleros: Circulero[] = [
     apodo: "Valesk",
     image: "img-valeska",
     roles: [
-      "Contenidista","Planner"
+      "Contenidista", "Planner"
     ]
   },
   {
@@ -242,7 +243,7 @@ export const circuleros: Circulero[] = [
     apodo: "Tala",
     image: "img-tala",
     roles: [
-      "Director/a de Creatividad"
+      "Director general Creativo"
     ]
   },
   {
@@ -387,7 +388,7 @@ export const circuleros: Circulero[] = [
     apodo: "Andrés",
     image: "",
     roles: [
-      "Redactor","Director/a de Arte"
+      "Redactor", "Director/a de Arte"
     ]
   },
   {
@@ -396,7 +397,7 @@ export const circuleros: Circulero[] = [
     apodo: "Santi",
     image: "",
     roles: [
-      "Cuentas","Audiovisualista"
+      "Cuentas", "Audiovisualista"
     ]
   },
   {
@@ -423,7 +424,79 @@ export const circuleros: Circulero[] = [
     apodo: "Kike",
     image: "img-kike",
     roles: [
-      "Socio","Diseñador/a IT","Diseñador/a"
+      "Socio", "Diseñador/a IT", "Diseñador/a"
+    ]
+  }
+]
+export interface Pregunta {
+  id: number;
+  pregunta: string;
+  roles: Array<RolPregunta>
+}
+
+export interface RolPregunta {
+  buscado: string;
+  correcto: Array<Rol>
+}
+
+export const preguntas: Array<Pregunta> = [
+  {
+    id: 1,
+    pregunta: "Seleccionemos a la dupla inicial",
+    roles:
+      [
+        {
+          buscado: "DP",
+          correcto: ["DP"]
+        },
+        {
+          buscado: "Cuentas",
+          correcto: ["Cuentas"]
+        },
+      ]
+
+  },
+  {
+    id: 2,
+    pregunta: "Sumemos a Creatividad",
+    roles:[
+      {
+        buscado:"Redactor/a",
+        correcto:["Redactor","Director general Creativo"]
+      },
+      {
+        buscado:"Director/a de arte",
+        correcto:["Director/a de Arte","Director/a de Creatividad"]
+      }
+    ]
+  },
+  {
+    /* preguntar por gonza */
+    id:3,
+    pregunta:"Sigamos armando el equipo de Branding",
+    roles:[
+      {
+        buscado:"Diseñador",
+        correcto:["Diseñador/a","Diseñador/a IT"]
+      },
+      {
+        buscado:"Diseñador",
+        correcto:["Diseñador/a","Diseñador/a IT"]
+      }
+    ]
+  },
+  {
+    id:4,
+    pregunta:"Solo nos falta IT",
+    roles:[
+      {
+        buscado:"Diseñador/a Web",
+        correcto:["Diseñador/a IT"]
+      },
+      {
+        buscado:"Programador",
+        correcto:["Desarrollador IT"]
+      }
     ]
   }
 ]
