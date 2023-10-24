@@ -1,12 +1,14 @@
-import {create} from 'zustand';
+import { create } from 'zustand';
 
 interface GameStore {
-  count : number;
+  stage: number;
   increment: () => void;
+  restoreStage: () => void;
 }
 
 
 export const useGameStore = create<GameStore>((set) => ({
-  count: 0,
-  increment: () => set((state) => ({count: state.count + 1})),
+  stage: 1,
+  increment: () => set((state) => ({ stage: state.stage + 1 })),
+  restoreStage: () => set({ stage: 0 }),
 }));

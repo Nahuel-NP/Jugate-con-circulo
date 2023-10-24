@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSensor, MouseSensor, TouchSensor, useSensors, DragEndEvent, DndContext, closestCenter } from '@dnd-kit/core';
-import { Circulero, circuleros } from '../data/circuleros';
+import { Circulero, circuleros, Pregunta } from '../data/circuleros';
 import { Droppable } from "../components/DragAndDrop/Droppable";
 import { Draggable } from "../components/DragAndDrop/Draggable";
 import CirculeroCard from "../components/CirculeroCard";
 import { useModalStore } from "../store/modalStore";
+import { useGameStore } from "../store/gameStore";
+import { useRandomCirculeros } from "../hooks/useRandomCirculeros";
 
 
 
@@ -18,16 +20,34 @@ const Game = () => {
   /* const [overlay,setOverlay] = useState(false); */
 
   const setModal = useModalStore((state) => (state.setIsOpen))
-  /* const modal = useModalStore((state) => (state.isOpen)) */
+  const stage = useGameStore((state) => (state.stage))
+  const increment = useGameStore((state) => (state.increment))
+  /* const [loading,setLoading] = useState(false) */
+  const [question, setQuestion] = useState<Pregunta | null>()
+
+  const [circuleros2,setCirculeros] = useState<Array<Circulero>>()
+
+/*   const {circuleros : circuleros20,pregunta} = useRandomCirculeros(stage)
+  setCirculeros(circuleros20)
+  setQuestion(pregunta) */
+  useEffect(() => {
+    
+    const {circuleros : circuleros20,pregunta} = useRandomCirculeros(stage)
+    setCirculeros(circuleros20)
+    setQuestion(pregunta)
+
+
+  }, [stage])
+
 
   useEffect(() => {
     const hasModalBeenShown = sessionStorage.getItem('modalShown');
 
     if (!hasModalBeenShown) {
-      setTimeout(()=>{
+      setTimeout(() => {
 
         setModal(true);
-      },3000)
+      }, 3000)
       sessionStorage.setItem('modalShown', 'true');
     }
   }, [setModal]);
@@ -75,49 +95,55 @@ const Game = () => {
     }
   }
 
+  const comprobar = ()=>{
+
+    setSelectedCirculero({
+      firstCirculero: null,
+      secondCirculero: null
+    })
+    increment()
+  }
   return (
-    < section className="z-50 flex items-center justify-center w-full min-h-screen py-24 lg:p-8 md:pt-4 saturate-150" style={{ viewTransitionName: 'view', background: 'linear-gradient(90deg, rgba(53, 19, 96, 0.50) 0%, rgba(29, 183, 179, 0.50) 100%)' }}>
+    < section className="z-50 flex flex-col items-center w-full min-h-screen py-24 lg:pt-24 md:pt-4 saturate-150" style={{ viewTransitionName: 'view', background: 'linear-gradient(90deg, rgba(53, 19, 96, 0.50) 0%, rgba(29, 183, 179, 0.50) 100%)' }}>
       <div className="container px-8 py-4 md:mt-14">
         <DndContext sensors={sensors} autoScroll={false} collisionDetection={closestCenter} onDragEnd={drawEnd}>
 
-          <div className="grid justify-center max-w-6xl gap-4 mx-auto text-sm xl:pb-10 lg:gap-8 xl:gap-y-12 lg:grid-cols-5">
-            <div className=" lg:col-start-1 lg:col-span-2   min-h-[150px] max-w-sm   md:max-w-sm ">{/* seleccion 1 */}
+          <div className="grid justify-center max-w-6xl gap-2 mx-auto text-sm xl:pb-10 lg:gap-4 xl:gap-y-12 lg:grid-cols-5">
+            <div className=" lg:col-start-1 lg:col-span-2 justify-self-end  self-end w-full  min-h-[150px] max-w-sm   md:max-w-sm ">{/* seleccion 1 */}
               <Droppable id="first" >
 
                 {
                   selectedCirculero.firstCirculero ?
-                    <div className="relative flex items-center justify-center w-full h-full p-4 bg-white before:w-full before:h-full before:absolute before:bg-c-magenta before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
+                    <div className="relative flex items-center justify-center w-full p-4 bg-white h-36 before:w-full before:h-full before:absolute before:bg-c-magenta before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
                       <CirculeroCard circulero={selectedCirculero.firstCirculero} rol="DP" />
                     </div>
                     :
-                    <div className="relative flex items-center justify-center w-full h-full p-4 bg-c-magenta before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
-                      <p className="text-white">Un/a DP se encarga de dirigir la estrategia general del proyecto. Es responsable de armar el equipo, crear la propuesta y darle seguimiento a los avances.
-                      </p>
+                    <div className="relative flex items-center justify-center w-full p-4 h-36 bg-c-magenta before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
+                      <p className="text-white" dangerouslySetInnerHTML={{__html:question? question?.roles[0].descripcion : ''}}/>
                     </div>
                 }
               </Droppable>
             </div>
-            <div className=" lg:col-start-3 lg:row-span-2 lg:col-span-3">
+            <div className="my-4 lg:col-start-3 lg:row-span-2 lg:col-span-3">
               <Droppable id="grid">
-                <div className="grid max-w-sm grid-cols-5 gap-2 lg:max-w-lg xl:max-w-2xl">
-                  {circuleros.map(item => (
+                <div className="grid max-w-sm grid-cols-5 gap-2 lg:gap-4 lg:max-w-lg xl:max-w-2xl">
+                  {circuleros2 && circuleros2.map(item => (
                     <Draggable disabled={item == selectedCirculero.firstCirculero || selectedCirculero.secondCirculero == item} id={item.id.toString()} key={item.id} circulero={item} />))
                   }
                 </div>
               </Droppable>
             </div>
-            <div className=" lg:col-start-1  lg:col-span-2 relative min-h-[150px] max-w-sm   md:max-w-sm before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">{/* seleccion 2 */}
+            <div className=" lg:col-start-1  justify-self-end w-full  lg:col-span-2 relative min-h-[150px] max-w-sm  self-start  md:max-w-sm   ">{/* seleccion 2 */}
               <Droppable id="second" >
                 {
                   selectedCirculero.secondCirculero ?
-                    <div className="relative flex items-center justify-center w-full h-full p-4 bg-white before:w-full before:h-full before:absolute before:bg-c-cyan before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
+                    <div className="relative flex items-center justify-center w-full p-4 bg-white h-36 before:w-full before:h-full before:absolute before:bg-c-cyan before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
                       <CirculeroCard circulero={selectedCirculero.secondCirculero} rol="Cuentas" />
                     </div>
                     :
-                    <div className="relative flex items-center justify-center w-full h-full p-4 bg-c-cyan before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
-                      <p className="text-black">
-                        Un/a CUENTAS es su mano derecha. Acompaña en la organización interna y en la comunicación con el cliente para solicitar información.
-                      </p>
+                    <div className="relative flex items-center justify-center w-full p-4 text-black h-36 bg-c-cyan before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
+                      <p className="text-black" dangerouslySetInnerHTML={{__html:question? question?.roles[1].descripcion : ''}}/>
+      
                     </div>
                 }
               </Droppable>
@@ -125,6 +151,7 @@ const Game = () => {
           </div>
         </DndContext>
       </div>
+      <button onClick={comprobar} disabled={!selectedCirculero.firstCirculero || !selectedCirculero.secondCirculero} className="px-6 py-2 mt-4 font-bold rounded-full lg:mt-0 disabled:bg-gray-300 bg-c-yellow"> Continuar </button>
     </section>
   );
 }

@@ -5,7 +5,7 @@ export interface Circulero {
   image: string,
   roles: Array<Rol>
 }
-type Rol = "Audiovisualista"
+export type Rol = "Audiovisualista"
   | "DP"
   | "Fotógrafo"
   | "Redactor"
@@ -419,8 +419,8 @@ export const circuleros: Circulero[] = [
     ]
   },
   {
-    id: 43,
-    name: "Iabichella Robert Agustin",
+    id: 44,
+    name: "Kike",
     apodo: "Kike",
     image: "img-kike",
     roles: [
@@ -436,7 +436,8 @@ export interface Pregunta {
 
 export interface RolPregunta {
   buscado: string;
-  correcto: Array<Rol>
+  correcto: Array<Rol>;
+  descripcion:string
 }
 
 export const preguntas: Array<Pregunta> = [
@@ -447,11 +448,13 @@ export const preguntas: Array<Pregunta> = [
       [
         {
           buscado: "DP",
-          correcto: ["DP"]
+          correcto: ["DP"],
+          descripcion:"Un/a <span class='font-bold'>DP</span> se encarga de dirigir la estrategia general del proyecto. Es responsable de armar el equipo, crear la propuesta y darle seguimiento a los avances."
         },
         {
           buscado: "Cuentas",
-          correcto: ["Cuentas"]
+          correcto: ["Cuentas"],
+          descripcion:"Un/a <span class='font-bold'>CUENTAS</span> es su mano derecha. Acompaña en la organización interna y en la comunicación con el cliente para solicitar información."
         },
       ]
 
@@ -461,12 +464,14 @@ export const preguntas: Array<Pregunta> = [
     pregunta: "Sumemos a Creatividad",
     roles:[
       {
-        buscado:"Redactor/a",
-        correcto:["Redactor","Director general Creativo"]
+        buscado:"Dr creativo",
+        correcto:["Director/a de Arte","Director/a de Creatividad"],
+        descripcion:"Necesitamos un <span class='font-bold'>DR CREATIVO</span> que se encargará de la estrategia visual."
       },
       {
-        buscado:"Director/a de arte",
-        correcto:["Director/a de Arte","Director/a de Creatividad"]
+        buscado:"Redactor",
+        correcto:["Redactor","Director general Creativo"],
+        descripcion:"Y necesitaremos un <span class='font-bold'>REDACTOR</span> que se encargará de desarrollar la estrategia discursiva de las campañas."
       }
     ]
   },
@@ -477,11 +482,13 @@ export const preguntas: Array<Pregunta> = [
     roles:[
       {
         buscado:"Diseñador",
-        correcto:["Diseñador/a","Diseñador/a IT"]
+        correcto:["Diseñador/a","Diseñador/a IT"],
+        descripcion:"Necesitamos primer <span class='font-bold'>DISEÑADOR/A</span> que se encargará de plasmar visualemente todas las estrategias, discurso y objetivos planteados."
       },
       {
         buscado:"Diseñador",
-        correcto:["Diseñador/a","Diseñador/a IT"]
+        correcto:["Diseñador/a","Diseñador/a IT"],
+        descripcion:"El otro <span class='font-bold'>DISEÑADOR/A</span>se encargará de darle una segunda mirada al proyecto y socorrer al Diseñador principal con todo lo que necesite durante el proceso."
       }
     ]
   },
@@ -491,11 +498,13 @@ export const preguntas: Array<Pregunta> = [
     roles:[
       {
         buscado:"Diseñador/a Web",
-        correcto:["Diseñador/a IT"]
+        correcto:["Diseñador/a IT"],
+        descripcion:"El/a <span class='font-bold'>DISEÑADOR/A WEB</span> nos ayudará darle forma, función e identidad al contenido que se plasmará en el sitio web."
       },
       {
         buscado:"Programador",
-        correcto:["Desarrollador IT"]
+        correcto:["Desarrollador IT"],
+        descripcion:"El <span class='font-bold'>PROGRAMADOR</span> es quien se encargará de lograr que los códigos muestren lo planteado por la Diseñadora web."
       }
     ]
   }
