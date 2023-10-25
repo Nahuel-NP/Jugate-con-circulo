@@ -442,7 +442,7 @@ export interface RolPregunta {
 
 export const preguntas: Array<Question> = [
   {
-    id: 1,
+    id: 0,
     pregunta: "Seleccionemos a la dupla inicial",
     roles:
       [
@@ -460,7 +460,7 @@ export const preguntas: Array<Question> = [
 
   },
   {
-    id: 2,
+    id: 1,
     pregunta: "Sumemos a Creatividad",
     roles:[
       {
@@ -477,7 +477,7 @@ export const preguntas: Array<Question> = [
   },
   {
     /* preguntar por gonza */
-    id:3,
+    id:2,
     pregunta:"Sigamos armando el equipo de Branding",
     roles:[
       {
@@ -493,7 +493,7 @@ export const preguntas: Array<Question> = [
     ]
   },
   {
-    id:4,
+    id:3,
     pregunta:"Solo nos falta IT",
     roles:[
       {
