@@ -3,7 +3,7 @@ import { useModalStore } from "../../store/modalStore";
 
 const TutorialModal = () => {
 
-  const setOpen = useModalStore((state) => (state.setIsOpen))
+  const setOpen = useModalStore((state) => (state.setTutorialModal))
   return (
     <>
           <p className="w-[324px] h-[99px] text-center text-white text-base font-bold font-['Rubik'] leading-[31px]">Para elegir un Circulerx seleccioná y arrastrá hasta la tarjeta con la descripción</p>
