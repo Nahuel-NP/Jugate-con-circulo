@@ -21,20 +21,21 @@ const Game = () => {
 
   const setModal = useModalStore((state) => (state.setTutorialModal))
   const setErrorModal = useModalStore((state) => (state.setErrorModal))
-  
+
   const stage = useGameStore((state) => (state.stage))
-  
-  // const increment = useGameStore((state) => (state.increment))
+  const addPartner = useGameStore((state) => (state.addPartner))
+
+  const increment = useGameStore((state) => (state.increment))
 
   const [question, setQuestion] = useState<Question | null>()
-  
+
   const [circuleros2, setCirculeros] = useState<Array<Circulero>>()
-  
+
   const [selectedCirculero, setSelectedCirculero] = useState<CirculerosState>({
     firstCirculero: null,
     secondCirculero: null
   })
-  const { result, resetSelected} = useVerifyAnswer(selectedCirculero.firstCirculero!,selectedCirculero.secondCirculero!, question!)
+  const { result, resetSelected } = useVerifyAnswer(selectedCirculero.firstCirculero!, selectedCirculero.secondCirculero!, question!)
 
   useEffect(() => {
     const { circuleros: circuleros20, pregunta } = useRandomCirculeros(stage)
@@ -90,9 +91,15 @@ const Game = () => {
 
 
   const comprobar = () => {
-    
+
     if (result.hasError) {
       setErrorModal(true)
+    } else {
+      if (question) {
+        addPartner(selectedCirculero.firstCirculero!, question?.roles[0].buscado)
+        addPartner(selectedCirculero.secondCirculero!, question?.roles[1].buscado)
+      }
+      increment()
     }
 
     setSelectedCirculero({
@@ -100,7 +107,7 @@ const Game = () => {
       secondCirculero: null
     })
     resetSelected()
-    /* increment() */
+
   }
 
   return (
