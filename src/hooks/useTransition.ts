@@ -14,7 +14,6 @@ const useTransition = () => {
       navigate(route)
       return;
     }
-    console.log({route});
     //@ts-ignore
     document.startViewTransition(() => {
       //cambios de forma sincrona en el DOM
