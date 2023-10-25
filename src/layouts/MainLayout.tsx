@@ -1,26 +1,25 @@
-import { Outlet, useLocation} from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useModalStore } from "../store/modalStore";
 import Modal from "../components/Modal";
 import { useEffect, useState } from "react";
+import TutorialModal from "../components/modals/TutorialModal";
 
 const MainLayout = () => {
 
   const location = useLocation()
 
- const [showBar,setShowBar] = useState(false)
+  const [showBar, setShowBar] = useState(false)
   useEffect(() => {
 
     if (location.pathname === '/game') {
       setShowBar(true)
-    }else{
+    } else {
       setShowBar(false)
     }
 
   }, [location]);
-  
-  const modal = useModalStore((state) => ({
-    ...state
-  }))
+
+  const modal = useModalStore((state) => (state.isOpen))
 
   return (
     <main className="relative bg-fixed bg-center bg-cover bg-montana font-rubik">
@@ -35,13 +34,9 @@ const MainLayout = () => {
       <Outlet />
       <img style={{ viewTransitionName: 'mountains', zIndex: 10 }} src="/images/backgrounds/montana/front.webp" className="fixed bottom-0 w-full " loading="lazy" decoding="async" alt="mountains" />
       {
-        modal.isOpen &&
+        modal &&
         <Modal>
-          <p className="w-[324px] h-[99px] text-center text-white text-base font-bold font-['Rubik'] leading-[31px]">Para elegir un Circulerx seleccioná y arrastrá hasta la tarjeta con la descripción</p>
-          <img src="/images/icons/swipe-icon.svg" alt="swap icon" className="lg:block hidden animate-wiggle-more animate-infinite animate-duration-[2000ms] animate-delay-0 animate-ease-in-out animate-normal animate-fill-both" />
-          <img src="/images/icons/swipe-icon-rotated.svg" alt="swap icon" className=" lg:hidden animate-wiggle-more animate-infinite animate-duration-[2000ms] animate-delay-0 animate-ease-in-out animate-normal animate-fill-both" />
-          <button onClick={() => modal.setIsOpen(false)}
-            className="w-[153px] h-[47px] bg-yellow-400 rounded-[50px] hover:scale-105 transition-transform shadow">Entendido</button>
+          <TutorialModal />
         </Modal>
       }
     </main>
