@@ -18,9 +18,12 @@ interface Partner{
 
 
 export const useGameStore = create<GameStore>((set) => ({
-  stage: 1,
-  team:[],
+  stage: 0,
   increment: () => set((state) => ({ stage: state.stage + 1 })),
   restoreStage: () => set({ stage: 0 }),
+  team:[],
   addPartner: (partner:Circulero,rol:string) => set((state) => ({ team: [...state.team, {circulero:partner,rol}]}))
+
+
+
 }));
