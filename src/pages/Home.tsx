@@ -1,8 +1,5 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 
 import useTransition from "../hooks/useTransition";
-
-
 const Home = () => {
 
   const { handletransition } = useTransition()
