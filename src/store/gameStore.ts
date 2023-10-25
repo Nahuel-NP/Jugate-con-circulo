@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 
+
 interface GameStore {
   stage: number;
   increment: () => void;

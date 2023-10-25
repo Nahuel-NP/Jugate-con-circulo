@@ -1,5 +1,4 @@
 import { Circulero, Question } from "../data/circuleros";
-import { CirculerosState } from "../pages/Game";
 import { useEffect, useState } from "react";
 
 export interface Result {

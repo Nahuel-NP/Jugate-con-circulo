@@ -3,6 +3,7 @@ import { useModalStore } from "../store/modalStore";
 import Modal from "../components/Modal";
 import { useEffect, useState } from "react";
 import TutorialModal from "../components/modals/TutorialModal";
+import FailModasl from "../components/modals/FailModasl";
 
 const MainLayout = () => {
 
@@ -19,7 +20,8 @@ const MainLayout = () => {
 
   }, [location]);
 
-  const modal = useModalStore((state) => (state.isOpen))
+  const tutorialModal = useModalStore((state) => (state.tutorialModal))
+  const errorModal = useModalStore((state) => (state.errorModal))
 
   return (
     <main className="relative bg-fixed bg-center bg-cover bg-montana font-rubik">
@@ -34,10 +36,18 @@ const MainLayout = () => {
       <Outlet />
       <img style={{ viewTransitionName: 'mountains', zIndex: 10 }} src="/images/backgrounds/montana/front.webp" className="fixed bottom-0 w-full " loading="lazy" decoding="async" alt="mountains" />
       {
-        modal &&
+        tutorialModal &&
         <Modal>
           <TutorialModal />
         </Modal>
+      }
+
+      {
+        errorModal &&
+        <Modal bgClass="bg-black">
+          <FailModasl/>
+        </Modal>
+
       }
     </main>
   );

@@ -1,12 +1,16 @@
 import {create} from 'zustand';
 
 interface ModalStore {
-    isOpen: boolean;
-    setIsOpen: (isOpen: boolean) => void;
+    tutorialModal: boolean;
+    setTutorialModal: (tutorialModal: boolean) => void;
+    errorModal:boolean;
+    setErrorModal: (tutorialModal: boolean) => void;
 }
 
 
 export const useModalStore = create<ModalStore>((set) => ({
-    isOpen: false,
-    setIsOpen: (isOpen: boolean) => set({isOpen}),
+    tutorialModal: false,
+    setTutorialModal: (tutorialModal: boolean) => set({tutorialModal}),
+    errorModal: false,
+    setErrorModal: (errorModal: boolean) => set({errorModal}),
 }));

@@ -7,7 +7,8 @@ import CirculeroCard from "../components/CirculeroCard";
 import { useModalStore } from "../store/modalStore";
 import { useGameStore } from "../store/gameStore";
 import { useRandomCirculeros } from "../hooks/useRandomCirculeros";
-import { useVerifyAnswer } from "../hooks/useverifyAnswer";
+import { useVerifyAnswer } from "../hooks/useVerifyAnswer";
+
 
 
 export interface CirculerosState {
@@ -18,11 +19,12 @@ export interface CirculerosState {
 const Game = () => {
 
 
-  const setModal = useModalStore((state) => (state.setIsOpen))
+  const setModal = useModalStore((state) => (state.setTutorialModal))
+  const setErrorModal = useModalStore((state) => (state.setErrorModal))
   
   const stage = useGameStore((state) => (state.stage))
   
-  const increment = useGameStore((state) => (state.increment))
+  // const increment = useGameStore((state) => (state.increment))
 
   const [question, setQuestion] = useState<Question | null>()
   
@@ -88,7 +90,10 @@ const Game = () => {
 
 
   const comprobar = () => {
-    console.log(result);
+    
+    if (result.hasError) {
+      setErrorModal(true)
+    }
 
     setSelectedCirculero({
       firstCirculero: null,
