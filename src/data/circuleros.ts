@@ -428,7 +428,7 @@ export const circuleros: Circulero[] = [
     ]
   }
 ]
-export interface Pregunta {
+export interface Question {
   id: number;
   pregunta: string;
   roles: Array<RolPregunta>
@@ -440,7 +440,7 @@ export interface RolPregunta {
   descripcion:string
 }
 
-export const preguntas: Array<Pregunta> = [
+export const preguntas: Array<Question> = [
   {
     id: 1,
     pregunta: "Seleccionemos a la dupla inicial",

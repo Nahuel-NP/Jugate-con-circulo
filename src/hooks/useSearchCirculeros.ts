@@ -1,6 +1,6 @@
-import { Circulero, circuleros, Pregunta } from '../data/circuleros';
+import { Circulero, circuleros, Question } from '../data/circuleros';
 
-export const useSearchCirculeros = (pregunta: Pregunta, cantidad: number = 4) => {
+export const useSearchCirculeros = (pregunta: Question, cantidad: number = 4) => {
 
   const respuestas_correctas: Circulero[] = [];
   const {roles} = pregunta;
