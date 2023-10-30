@@ -37,7 +37,8 @@ const Game = () => {
     firstCirculero: null,
     secondCirculero: null
   })
-  const { result, resetSelected } = useVerifyAnswer(selectedCirculero.firstCirculero!, selectedCirculero.secondCirculero!, question!)
+  
+  const { hasError, resetSelected } = useVerifyAnswer(selectedCirculero.firstCirculero!, selectedCirculero.secondCirculero!, question!)
 
   useEffect(() => {
     const { circuleros: circuleros20, pregunta } = useRandomCirculeros(stage)
@@ -84,21 +85,24 @@ const Game = () => {
 
   const comprobar = () => {
 
-    if (result.hasError) {
+    console.log('hay error ?',hasError);
+    if (hasError) {
       setErrorModal(true)
     } else {
+
       if (question) {
         addPartner(selectedCirculero.firstCirculero!, question?.roles[0].buscado)
         addPartner(selectedCirculero.secondCirculero!, question?.roles[1].buscado)
       }
       increment()
+      resetSelected()
     }
 
-    setSelectedCirculero({
+/*     setSelectedCirculero({
       firstCirculero: null,
       secondCirculero: null
-    })
-    resetSelected()
+    }) */
+    
 
   }
 

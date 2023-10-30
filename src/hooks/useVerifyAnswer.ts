@@ -1,5 +1,6 @@
 import { Circulero, Question } from "../data/circuleros";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useGameStore } from "../store/gameStore";
 
 export interface Result {
   hasError: boolean;
@@ -15,21 +16,29 @@ interface Error {
 
 
 export const useVerifyAnswer = (
-  firstCirculero:Circulero,
+  firstCirculero: Circulero,
   secondCirculero: Circulero,
   question: Question
 ) => {
 
-  
-  const [result, setResult] = useState<Result>({
+
+  /* const [result, setResult] = useState<Result>({
     hasError: false,
     first: null,
     second: null
-  });
+  }); */
 
+  const setHasError = useGameStore(state => state.setHasError)
+  const hasError = useGameStore(state => state.hasError)
+  const setFirstError = useGameStore(state => state.setFirstError)
+  const firstError = useGameStore(state => state.firstError)
+  const setSecondError = useGameStore(state => state.setSecondError)
+  const secondError = useGameStore(state => state.secondError)
 
   const resetSelected = () => {
-    setResult({ hasError: false, first: null, second: null })
+    setHasError(false)
+    setFirstError(null)
+    setSecondError(null)
   }
 
   useEffect(() => {
@@ -40,49 +49,39 @@ export const useVerifyAnswer = (
         question?.roles[0].correcto.includes(rol)
       )
     ) {
-      console.log(firstCirculero);
-      setResult({
-        hasError: true,
-        first: {
-          title: `Fallaste seleccionando al ${question.roles[0].buscado}`,
-          content: `${firstCirculero.name} es ${firstCirculero.roles.join(' y ')}`
-        },
-        second: result.second
+      setHasError(true)
+      setFirstError({
+        title: `Fallaste seleccionando al <span class="px-4 py-2 ml-2 text-white uppercase shadow-md bg-c-magenta shadow-black ">${question.roles[0].buscado}</span>`,
+        content: `${firstCirculero.apodo} es ${firstCirculero.roles.join(' y ')}`
       })
-    } else {
-      setResult({
-        hasError: !!result.second,
-        first: null,
-        second: result.second
-      })
-    }
 
-  }, [firstCirculero,question]);
+    } else {
+      if (!secondError) {
+        setHasError(false)
+      }
+      setFirstError(null)
+    }
+  }, [firstCirculero, question]);
 
   useEffect(() => {
-    console.log(secondCirculero);
     if (
       secondCirculero &&
       !secondCirculero?.roles.some((rol) =>
         question?.roles[1].correcto.includes(rol)
       )
     ) {
-      setResult({
-        hasError: true,
-        second: {
-          title: `Fallaste seleccionando al ${question.roles[1].buscado}`,
-          content: `${secondCirculero.name} es ${secondCirculero.roles.join(' y ')}`
-        },
-        first: result.first
+      setHasError(true)
+      setSecondError({
+        title: `Fallaste seleccionando al <span class="px-4 py-2 text-black uppercase shadow-md bg-c-cyan shadow-black">${question.roles[1].buscado}</span>`,
+        content: `${secondCirculero.apodo} es ${secondCirculero.roles.join(' y ')}`
       })
     } else {
-      setResult({
-        hasError: !!result.first,
-        first: result.first,
-        second: null
-      })
+      setSecondError(null)
+      if (!firstError) {
+        setHasError(false)
+      }
     }
-  }, [secondCirculero,question]);
+  }, [secondCirculero, question]);
 
-  return { result, resetSelected };
+  return {hasError,resetSelected};
 };
