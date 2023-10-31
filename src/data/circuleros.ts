@@ -52,7 +52,7 @@ export const circuleros: Circulero[] = [
     id: 3,
     name: "Avalos Ariel",
     apodo: "Ari",
-    image: "",
+    image: "img-ari",
     roles: [
       "Fotógrafo"
     ]
@@ -61,7 +61,7 @@ export const circuleros: Circulero[] = [
     id: 4,
     name: "BARBERO JUAN PABLO",
     apodo: "Juanpa",
-    image: "",
+    image: "img-juanpa",
     roles: [
       "Redactor"
     ]
@@ -72,7 +72,7 @@ export const circuleros: Circulero[] = [
     apodo: "Gonza",
     image: "img-gonza",
     roles: [
-      "Desarrollador IT", "Diseñador/a"
+      "Desarrollador IT", "Diseñador/a IT"
     ]
   },
   {
@@ -88,7 +88,7 @@ export const circuleros: Circulero[] = [
     id: 7,
     name: "Garcia Ivette Gaia",
     apodo: "Ivette",
-    image: "",
+    image: "img-ive",
     roles: [
       "Cuentas", "Diseñador/a"
     ]
@@ -97,7 +97,7 @@ export const circuleros: Circulero[] = [
     id: 8,
     name: "Garcia Malbran Natalia",
     apodo: "Nati G",
-    image: "",
+    image: "img-nati-g",
     roles: [
       "de Recursos Humanos"
     ]
@@ -386,7 +386,7 @@ export const circuleros: Circulero[] = [
     id: 40,
     name: "Magariños Andres Manuel",
     apodo: "Andrés",
-    image: "",
+    image: "img-andres",
     roles: [
       "Redactor", "Director/a de Arte"
     ]
@@ -395,7 +395,7 @@ export const circuleros: Circulero[] = [
     id: 41,
     name: "Durand Santiago",
     apodo: "Santi",
-    image: "",
+    image: "img-santi",
     roles: [
       "Cuentas", "Audiovisualista"
     ]
@@ -404,7 +404,7 @@ export const circuleros: Circulero[] = [
     id: 42,
     name: "Vicente Agustina",
     apodo: "Agus",
-    image: "",
+    image: "img-agustina",
     roles: [
       "Cuentas"
     ]
@@ -413,7 +413,7 @@ export const circuleros: Circulero[] = [
     id: 43,
     name: "Iabichella Robert Agustin",
     apodo: "Agustin",
-    image: "",
+    image: "img-agustin",
     roles: [
       "Audiovisualista"
     ]
@@ -482,12 +482,12 @@ export const preguntas: Array<Question> = [
     roles:[
       {
         buscado:"Diseñador",
-        correcto:["Diseñador/a","Diseñador/a IT"],
+        correcto:["Diseñador/a"],
         descripcion:"Necesitamos primer <span class='font-bold'>DISEÑADOR/A</span> que se encargará de plasmar visualemente todas las estrategias, discurso y objetivos planteados."
       },
       {
         buscado:"Diseñador",
-        correcto:["Diseñador/a","Diseñador/a IT"],
+        correcto:["Diseñador/a"],
         descripcion:"El otro <span class='font-bold'>DISEÑADOR/A</span>se encargará de darle una segunda mirada al proyecto y socorrer al Diseñador principal con todo lo que necesite durante el proceso."
       }
     ]
