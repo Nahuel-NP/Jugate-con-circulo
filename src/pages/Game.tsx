@@ -9,7 +9,7 @@ import { useRandomCirculeros } from "../hooks/useRandomCirculeros";
 import { useVerifyAnswer } from "../hooks/useVerifyAnswer";
 import { useTutorialModal } from "../hooks/useTutorialModal";
 
-import { Circulero, Question } from '../data/circuleros';
+import { Circulero } from '../data/circuleros';
 
 
 export interface CirculerosState {
@@ -23,13 +23,13 @@ const Game = () => {
 
   const setErrorModal = useModalStore((state) => (state.setErrorModal))
 
+  const setCorrectModal = useModalStore((state)=> state.setCorrectModal)
   const stage = useGameStore((state) => (state.stage))
   
   const addPartner = useGameStore((state) => (state.addPartner))
 
-  const increment = useGameStore((state) => (state.increment))
-
-  const [question, setQuestion] = useState<Question | null>()
+  /* const [question, setQuestion] = useState<Question | null>() */
+  const question = useGameStore((state) => (state.currentQuestion))
 
   const [circuleros, setCirculeros] = useState<Array<Circulero>>()
 
@@ -38,13 +38,13 @@ const Game = () => {
     secondCirculero: null
   })
   
-  const { hasError, resetSelected } = useVerifyAnswer(selectedCirculero.firstCirculero!, selectedCirculero.secondCirculero!, question!)
+  const { hasError, resetSelected } = useVerifyAnswer(selectedCirculero.firstCirculero!, selectedCirculero.secondCirculero!, question)
 
   useEffect(() => {
-    const { circuleros: circuleros20, pregunta } = useRandomCirculeros(stage)
+    const { circuleros: circuleros20} = useRandomCirculeros(stage)
 
     setCirculeros(circuleros20)
-    setQuestion(pregunta)
+    /* setQuestion(pregunta) */
 
   }, [stage])
 
@@ -90,11 +90,12 @@ const Game = () => {
       setErrorModal(true)
     } else {
 
+      setCorrectModal(true)
+      
       if (question) {
         addPartner(selectedCirculero.firstCirculero!, question?.roles[0].buscado)
         addPartner(selectedCirculero.secondCirculero!, question?.roles[1].buscado)
       }
-      increment()
       resetSelected()
     }
 
@@ -118,7 +119,7 @@ const Game = () => {
                 {
                   selectedCirculero.firstCirculero ?
                     <div className="relative flex items-center justify-center w-full p-4 bg-white h-36 before:w-full before:h-full before:absolute before:bg-c-magenta before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
-                      <CirculeroCard circulero={selectedCirculero.firstCirculero} rol="DP" />
+                      <CirculeroCard circulero={selectedCirculero.firstCirculero} rol={question.roles[0].buscado} />
                     </div>
                     :
                     <div className="relative flex items-center justify-center w-full p-4 h-36 bg-c-magenta before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
@@ -129,7 +130,7 @@ const Game = () => {
             </div>
             <div className="my-4 lg:col-start-3 lg:row-span-2 lg:col-span-3">
               <Droppable id="grid">
-                <div className="grid max-w-sm grid-cols-5 gap-2 lg:gap-4 lg:max-w-lg xl:max-w-2xl">
+                <div className="grid max-w-sm grid-cols-5 gap-2 xl:gap-4 lg:max-w-lg xl:max-w-2xl">
                   {circuleros && circuleros.map(item => (
                     <Draggable disabled={item == selectedCirculero.firstCirculero || selectedCirculero.secondCirculero == item} id={item.id.toString()} key={item.id} circulero={item} />))
                   }
@@ -141,7 +142,7 @@ const Game = () => {
                 {
                   selectedCirculero.secondCirculero ?
                     <div className="relative flex items-center justify-center w-full p-4 bg-white h-36 before:w-full before:h-full before:absolute before:bg-c-cyan before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
-                      <CirculeroCard circulero={selectedCirculero.secondCirculero} rol="Cuentas" />
+                      <CirculeroCard circulero={selectedCirculero.secondCirculero} rol={question.roles[1].buscado} />
                     </div>
                     :
                     <div className="relative flex items-center justify-center w-full p-4 text-black h-36 bg-c-cyan before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">

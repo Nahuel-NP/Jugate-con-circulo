@@ -37,11 +37,13 @@ const MainLayout = () => {
             <span className="px-4 py-2 text-black uppercase shadow-md bg-c-cyan shadow-black">{currentQuestion.roles[1].buscado}</span>
           </p>
         </div>
-        <div className="flex justify-end col-span-2 col-start-1 row-start-1 gap-4 py-4 lg:justify-center lg:col-start-2"> {
+        <div className="flex justify-end col-span-2 col-start-1 row-start-1 gap-1 py-4 lg:justify-center lg:col-start-2">
+          {
           ["1", "2", "3", "4", "5"].map((item) => (
             <img key={item} src="/images/icons/star-false.svg" alt="empty star" className="max-w-[50px]" />
-          ))}</div>
-        <img src="/images/rocket.gif" alt="rocket" className="absolute z-50 w-full lg:max-w-[200px] max-w-[150px] -translate-x-1/2  top-full -translate-y-1/2 left-1/4 md:left-1/2" />
+          ))}
+          </div>
+        <img src="/images/rocket.gif" alt="rocket" className="absolute z-50 w-full 2xl:max-w-[200px] lg:max-w-[170px] max-w-[150px] -translate-x-1/2  top-full -translate-y-1/2 left-1/4 md:left-1/2" />
       </div>}
       <Outlet />
       <img style={{ viewTransitionName: 'mountains', zIndex: 10 }} src="/images/backgrounds/montana/front.webp" className="fixed bottom-0 w-full " loading="lazy" decoding="async" alt="mountains" />
