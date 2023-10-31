@@ -8,11 +8,14 @@ const FailModasl = () => {
   const secondError = useGameStore((state) => state.secondError)
   const setFirstError = useGameStore((state) => state.setFirstError)
   const setSecondError = useGameStore((state) => state.setSecondError)
+  const resetQuestion = useGameStore((state) => state.resetQuestion)
 
   const reset = () => {
     setErrorModal(false)
     setFirstError(null)
     setSecondError(null)
+    resetQuestion()
+  
   }
 
   return (
