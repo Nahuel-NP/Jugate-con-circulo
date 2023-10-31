@@ -4,6 +4,8 @@ import Modal from "../components/Modal";
 import { useEffect, useState } from "react";
 import TutorialModal from "../components/modals/TutorialModal";
 import FailModasl from "../components/modals/FailModasl";
+import { useGameStore } from "../store/gameStore";
+import CorrectModal from "../components/modals/CorrectModal";
 
 const MainLayout = () => {
 
@@ -20,13 +22,21 @@ const MainLayout = () => {
 
   }, [location]);
 
-  const tutorialModal = useModalStore((state) => (state.tutorialModal))
-  const errorModal = useModalStore((state) => (state.errorModal))
+  const tutorialModal = useModalStore(state => state.tutorialModal)
+  const errorModal = useModalStore(state => state.errorModal)
+  const correctModal = useModalStore(state => state.correctModal)
+  const currentQuestion = useGameStore(state => state.currentQuestion)
 
   return (
     <main className="relative bg-fixed bg-center bg-cover bg-montana font-rubik">
       {showBar && <div style={{ viewTransitionName: 'rocket' }} className="absolute top-0 left-0 z-50 grid  w-full h-16 grid-cols-2  animate-fade-down animate-once animate-delay-[1500ms] animate-ease-linear lg:h-28 border-b-8 border-c-cyan border-dotted ">
-        <div className="items-center justify-center hidden col-start-1 row-start-1 mx-auto lg:flex "><p className=" text-c-yellow">Seleccionemos a la dupla inicial <span className="px-4 py-2 ml-2 text-white uppercase shadow-md bg-c-magenta shadow-black ">dp</span> <span className="mx-2 text-lg font-bold text-white shadow-md">+</span> <span className="px-4 py-2 text-black uppercase shadow-md bg-c-cyan shadow-black">cuentas</span></p> </div>
+        <div className="items-center justify-center hidden col-start-1 row-start-1 mx-auto lg:flex ">
+          <p className=" text-c-yellow">{currentQuestion.pregunta}
+            <span className="px-4 py-2 ml-2 text-white uppercase shadow-md bg-c-magenta shadow-black ">{currentQuestion.roles[0].buscado}</span>
+            <span className="mx-2 text-lg font-bold text-white shadow-md">+</span>
+            <span className="px-4 py-2 text-black uppercase shadow-md bg-c-cyan shadow-black">{currentQuestion.roles[1].buscado}</span>
+          </p>
+        </div>
         <div className="flex justify-end col-span-2 col-start-1 row-start-1 gap-4 py-4 lg:justify-center lg:col-start-2"> {
           ["1", "2", "3", "4", "5"].map((item) => (
             <img key={item} src="/images/icons/star-false.svg" alt="empty star" className="max-w-[50px]" />
@@ -45,10 +55,14 @@ const MainLayout = () => {
       {
         errorModal &&
         <Modal bgClass="bg-black">
-          <FailModasl/>
+          <FailModasl />
         </Modal>
 
       }
+      {correctModal &&
+        <Modal>
+          <CorrectModal />
+        </Modal>}
     </main>
   );
 }
