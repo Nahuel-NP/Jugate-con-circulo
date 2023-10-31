@@ -32,7 +32,7 @@ export const Draggable = ({ id, circulero, disabled = false }: Props) => {
     <div ref={setNodeRef} style={style}  {...listeners} {...attributes} className='flex max-w-[100px] z-50 items-center justify-center w-full overflow-hidden rounded-full  cursor-grab aspect-square'>
       {disabled
         ?
-        <div className='flex items-center justify-center w-full h-full text-center border-4 rounded-full cursor-not-allowed border-c-cyan'>
+        <div className='flex items-center justify-center w-full h-full text-center border-4 lg:border-[6px] rounded-full cursor-not-allowed border-c-cyan'>
           <p className='text-[10px] leading-[12px] px-2 text-white select-none sm:text-xs xl:text-base uppercase '>{circulero?.apodo}</p>
         </div>
         :
