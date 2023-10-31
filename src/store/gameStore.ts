@@ -1,11 +1,11 @@
 import { create } from 'zustand';
-import { Circulero } from '../data/circuleros';
+import { Circulero, Question, preguntas } from '../data/circuleros';
 import zukeeper from 'zukeeper';
 
 interface GameStore {
   stage: number;
   team: Array<Partner>;
-  increment: () => void;
+  incrementLevel: () => void;
   restoreStage: () => void;
   addPartner: (partner: Circulero, rol: string) => void;
   hasError: boolean;
@@ -14,6 +14,8 @@ interface GameStore {
   setHasError: (hasError: boolean) => void;
   setFirstError: (first: Error | null) => void;
   setSecondError: (second: Error | null) => void;
+  currentQuestion: Question;
+  resetQuestion: () => void;
 }
 
 interface Partner {
@@ -30,9 +32,9 @@ interface Error {
 
 
 
-export const useGameStore = create<GameStore>(zukeeper(set => ({
+export const useGameStore = create<GameStore>(zukeeper((set) => ({
   stage: 0,
-  increment: () => set((state) => ({ stage: state.stage + 1 })),
+  incrementLevel: () => set((state) => ({ stage: ++state.stage,currentQuestion: preguntas[state.stage]})),
   restoreStage: () => set({ stage: 0 }),
   team: [],
   addPartner: (partner: Circulero, rol: string) => set((state) => ({ team: [...state.team, { circulero: partner, rol }] })),
@@ -41,7 +43,9 @@ export const useGameStore = create<GameStore>(zukeeper(set => ({
   secondError: null,
   setHasError: (hasError) => set({ hasError }),
   setFirstError: (firstError) => set({ firstError }),
-  setSecondError: (secondError) => set({ secondError })
+  setSecondError: (secondError) => set({ secondError }),
+  currentQuestion: preguntas[0],
+  resetQuestion: () => set({ currentQuestion: preguntas[0] })
 })))
 
 
