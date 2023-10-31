@@ -29,7 +29,7 @@ export const Draggable = ({ id, circulero, disabled = false }: Props) => {
   };
 
   return (
-    <div ref={setNodeRef} style={style}  {...listeners} {...attributes} className='flex max-w-[100px] z-50 items-center justify-center w-full overflow-hidden rounded-full  cursor-grab aspect-square'>
+    <div ref={setNodeRef} style={style}  {...listeners} {...attributes} className='flex max-w-[80px] 2xl:max-w-[100px] z-50 items-center justify-center w-full overflow-hidden rounded-full  cursor-grab aspect-square'>
       {disabled
         ?
         <div className='flex items-center justify-center w-full h-full text-center border-4 lg:border-[6px] rounded-full cursor-not-allowed border-c-cyan'>
