@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { Circulero, Question, preguntas } from '../data/circuleros';
-import zukeeper from 'zukeeper';
+// import zukeeper from 'zukeeper';
 
 interface GameStore {
   stage: number;
@@ -16,6 +16,11 @@ interface GameStore {
   setSecondError: (second: Error | null) => void;
   currentQuestion: Question;
   resetQuestion: () => void;
+  firstSelectedCirculero:Circulero | null;
+  secondSelectedCirculero: Circulero | null;
+  setFirstSelectedCirculero: (circulero: Circulero | null) => void;
+  setSecondSelectedCirculero: (circulero: Circulero | null) => void;
+  resetSelectedCirculeros: () => void;
 }
 
 interface Partner {
@@ -32,7 +37,7 @@ interface Error {
 
 
 
-export const useGameStore = create<GameStore>(zukeeper((set) => ({
+export const useGameStore = create<GameStore>((set) => ({
   stage: 0,
   incrementLevel: () => set((state) => ({ stage: ++state.stage,currentQuestion: preguntas[state.stage]})),
   restoreStage: () => set({ stage: 0 }),
@@ -45,8 +50,18 @@ export const useGameStore = create<GameStore>(zukeeper((set) => ({
   setFirstError: (firstError) => set({ firstError }),
   setSecondError: (secondError) => set({ secondError }),
   currentQuestion: preguntas[0],
-  resetQuestion: () => set({ currentQuestion: preguntas[0] })
-})))
+  resetQuestion: () => set({ currentQuestion: preguntas[0],stage:0 }),
+  firstSelectedCirculero: null,
+  secondSelectedCirculero: null,
+  setFirstSelectedCirculero: (firstSelectedCirculero) => set({ firstSelectedCirculero }),
+  setSecondSelectedCirculero: (secondSelectedCirculero) => set({ secondSelectedCirculero }),
+  resetSelectedCirculeros: () => set({ firstSelectedCirculero: null, secondSelectedCirculero: null }),
+  
+}
+));
+
+
+
 
 
 

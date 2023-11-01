@@ -24,32 +24,22 @@ const Game = () => {
   const setErrorModal = useModalStore((state) => (state.setErrorModal))
 
   const setCorrectModal = useModalStore((state)=> state.setCorrectModal)
+  
   const stage = useGameStore((state) => (state.stage))
   
   const addPartner = useGameStore((state) => (state.addPartner))
 
-  /* const [question, setQuestion] = useState<Question | null>() */
   const question = useGameStore((state) => (state.currentQuestion))
 
   const [circuleros, setCirculeros] = useState<Array<Circulero>>()
 
-  const [selectedCirculero, setSelectedCirculero] = useState<CirculerosState>({
-    firstCirculero: null,
-    secondCirculero: null
-  })
-  
-  const { hasError, resetSelected } = useVerifyAnswer(selectedCirculero.firstCirculero!, selectedCirculero.secondCirculero!, question)
+  const { hasError, resetErrors } = useVerifyAnswer(question)
 
   useEffect(() => {
     const { circuleros: circuleros20} = useRandomCirculeros(stage)
 
     setCirculeros(circuleros20)
-    /* setQuestion(pregunta) */
-
   }, [stage])
-
-
- 
 
   const mouseSensor = useSensor(MouseSensor);
   const touchSensor = useSensor(TouchSensor);
@@ -57,7 +47,6 @@ const Game = () => {
   const sensors = useSensors(
     mouseSensor,
     touchSensor,
-
   );
 
   const drawEnd = (event: DragEndEvent) => {
@@ -73,36 +62,43 @@ const Game = () => {
     }
   }
 
+  const firstSelectedCirculero = useGameStore(state => state.firstSelectedCirculero)
+  const secondSelectedCirculero = useGameStore(state => state.secondSelectedCirculero)
+
+  const setFirstSelectedCirculero = useGameStore((state) => (state.setFirstSelectedCirculero))
+  const setSecondSelectedCirculero = useGameStore((state) => (state.setSecondSelectedCirculero))
+
   const addCirculero = (position: string, circulero: Circulero) => {
     if (position == 'first') {
-      setSelectedCirculero({ ...selectedCirculero, firstCirculero: circulero })
+      setFirstSelectedCirculero(circulero)
     }
     if (position == 'second') {
-      setSelectedCirculero({ ...selectedCirculero, secondCirculero: circulero })
+      setSecondSelectedCirculero(circulero)
     }
   }
 
 
   const comprobar = () => {
 
-    console.log('hay error ?',hasError);
     if (hasError) {
       setErrorModal(true)
     } else {
 
       setCorrectModal(true)
-      
+      // Agrega al team
+      console.log(question);
       if (question) {
-        addPartner(selectedCirculero.firstCirculero!, question?.roles[0].buscado)
-        addPartner(selectedCirculero.secondCirculero!, question?.roles[1].buscado)
+        console.log('ejecuta?');
+        addPartner(firstSelectedCirculero!, question?.roles[0].buscado)
+        addPartner(secondSelectedCirculero!, question?.roles[1].buscado)
       }
-      resetSelected()
+      resetErrors()
     }
 
-/*     setSelectedCirculero({
-      firstCirculero: null,
-      secondCirculero: null
-    }) */
+    // setSelectedCirculero({
+    //   firstCirculero: null,
+    //   secondCirculero: null
+    // })
     
 
   }
@@ -117,9 +113,9 @@ const Game = () => {
               <Droppable id="first" >
 
                 {
-                  selectedCirculero.firstCirculero ?
+                  firstSelectedCirculero ?
                     <div className="relative flex items-center justify-center w-full p-4 bg-white h-36 before:w-full before:h-full before:absolute before:bg-c-magenta before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
-                      <CirculeroCard circulero={selectedCirculero.firstCirculero} rol={question.roles[0].buscado} />
+                      <CirculeroCard circulero={firstSelectedCirculero} rol={question.roles[0].buscado} />
                     </div>
                     :
                     <div className="relative flex items-center justify-center w-full p-4 h-36 bg-c-magenta before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
@@ -132,7 +128,7 @@ const Game = () => {
               <Droppable id="grid">
                 <div className="grid max-w-sm grid-cols-5 gap-2 xl:gap-4 lg:max-w-lg xl:max-w-2xl">
                   {circuleros && circuleros.map(item => (
-                    <Draggable disabled={item == selectedCirculero.firstCirculero || selectedCirculero.secondCirculero == item} id={item.id.toString()} key={item.id} circulero={item} />))
+                    <Draggable disabled={item == firstSelectedCirculero || secondSelectedCirculero == item} id={item.id.toString()} key={item.id} circulero={item} />))
                   }
                 </div>
               </Droppable>
@@ -140,9 +136,9 @@ const Game = () => {
             <div className=" lg:col-start-1  justify-self-end w-full  lg:col-span-2 relative min-h-[150px] max-w-sm  self-start  md:max-w-sm   ">{/* seleccion 2 */}
               <Droppable id="second" >
                 {
-                  selectedCirculero.secondCirculero ?
+                  secondSelectedCirculero ?
                     <div className="relative flex items-center justify-center w-full p-4 bg-white h-36 before:w-full before:h-full before:absolute before:bg-c-cyan before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
-                      <CirculeroCard circulero={selectedCirculero.secondCirculero} rol={question.roles[1].buscado} />
+                      <CirculeroCard circulero={secondSelectedCirculero} rol={question.roles[1].buscado} />
                     </div>
                     :
                     <div className="relative flex items-center justify-center w-full p-4 text-black h-36 bg-c-cyan before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
@@ -155,7 +151,7 @@ const Game = () => {
           </div>
         </DndContext>
       </div>
-      <button onClick={comprobar} disabled={!selectedCirculero.firstCirculero || !selectedCirculero.secondCirculero} className="px-6 py-2 mt-4 font-bold rounded-full lg:mt-0 disabled:bg-gray-300 bg-c-yellow"> Continuar </button>
+      <button onClick={comprobar} disabled={!firstSelectedCirculero || !secondSelectedCirculero} className="px-6 py-2 mt-4 font-bold rounded-full lg:mt-0 disabled:bg-gray-300 bg-c-yellow"> Continuar </button>
     </section>
   );
 }
