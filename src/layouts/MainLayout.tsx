@@ -12,6 +12,7 @@ const MainLayout = () => {
   const location = useLocation()
 
   const [showBar, setShowBar] = useState(false)
+  const stage = useGameStore(state => state.stage)
   useEffect(() => {
 
     if (location.pathname === '/game') {
@@ -39,10 +40,14 @@ const MainLayout = () => {
         </div>
         <div className="flex justify-end col-span-2 col-start-1 row-start-1 gap-1 py-4 lg:justify-center lg:col-start-2">
           {
-          ["1", "2", "3", "4", "5"].map((item) => (
-            <img key={item} src="/images/icons/star-false.svg" alt="empty star" className="max-w-[50px]" />
-          ))}
-          </div>
+            ["1", "2", "3", "4", "5"].map((item, index) =>
+              <>
+                {(stage > index) ? <img key={item} src="/images/icons/star-correct.svg" alt="full star" className="max-w-[50px] animate-jump animate-thrice animate-duration-500 animate-delay-500" />
+                  :
+                  <img key={item} src="/images/icons/star-false.svg" alt="empty star" className="max-w-[50px]" />}
+              </>
+            )}
+        </div>
         <img src="/images/rocket.gif" alt="rocket" className="absolute z-50 w-full 2xl:max-w-[200px] lg:max-w-[170px] max-w-[150px] -translate-x-1/2  top-full -translate-y-1/2 left-1/4 md:left-1/2" />
       </div>}
       <Outlet />
