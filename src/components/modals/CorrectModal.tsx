@@ -6,10 +6,12 @@ const CorrectModal = () => {
 
   const setCorrectModal = useModalStore(state => state.setCorrectModal)
   const incrementLevel = useGameStore(state => state.incrementLevel)
+  const resetSelectedCirculeros = useGameStore(state => state.resetSelectedCirculeros)
   const level = useGameStore(state => state.stage)
   const nextLevel = () => {
     setCorrectModal(false)
     incrementLevel()
+    resetSelectedCirculeros()
   }
   return (
     <div className="flex flex-col items-center justify-center gap-6">
