@@ -10,7 +10,7 @@ const TutorialModal = () => {
           <img src="/images/icons/swipe-icon.svg" alt="swap icon" className="lg:block hidden animate-wiggle-more animate-infinite animate-duration-[2000ms] animate-delay-0 animate-ease-in-out animate-normal animate-fill-both" />
           <img src="/images/icons/swipe-icon-rotated.svg" alt="swap icon" className=" lg:hidden animate-wiggle-more animate-infinite animate-duration-[2000ms] animate-delay-0 animate-ease-in-out animate-normal animate-fill-both" />
           <button onClick={() => setOpen(false)}
-            className="w-[153px] h-[47px] bg-yellow-400 rounded-[50px] hover:scale-105 transition-transform shadow">Entendido</button>
+            className="w-[153px] h-[47px] bg-yellow-400 rounded-[50px] hover:scale-105 transition-transform shadow font-bold">Entendido</button>
     </>
   );
 }
