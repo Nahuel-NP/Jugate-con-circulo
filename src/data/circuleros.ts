@@ -26,6 +26,7 @@ export type Rol = "Audiovisualista"
   | "Diseñador/a"
   | "Director/a de Creatividad"
   | "Director general Creativo"
+  |"Ejecutivo Comercial"
 
 
 
@@ -126,7 +127,8 @@ export const circuleros: Circulero[] = [
     apodo: "Facu",
     image: "img-facu",
     roles: [
-      "Cuentas"
+      "Ejecutivo Comercial"
+      /* sacar de cuntas */
     ]
   },
   {
@@ -198,7 +200,7 @@ export const circuleros: Circulero[] = [
     apodo: "Roy",
     image: "img-roy",
     roles: [
-      "DP", "Diseñador/a"
+       "Diseñador/a","Director/a de Arte"
     ]
   },
   {
@@ -243,7 +245,7 @@ export const circuleros: Circulero[] = [
     apodo: "Tala",
     image: "img-tala",
     roles: [
-      "Director general Creativo"
+      "Director general Creativo","Redactor"
     ]
   },
   {
@@ -464,7 +466,7 @@ export const preguntas: Array<Question> = [
     pregunta: "Sumemos a Creatividad",
     roles:[
       {
-        buscado:"Dr creativo",
+        buscado:"Dr de Arte",
         correcto:["Director/a de Arte","Director/a de Creatividad"],
         descripcion:"Necesitamos un <span class='font-bold'>DR CREATIVO</span> que se encargará de la estrategia visual."
       },
