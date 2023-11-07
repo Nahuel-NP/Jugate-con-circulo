@@ -64,7 +64,7 @@ export const circuleros: Circulero[] = [
     apodo: "Juanpa",
     image: "img-juanpa",
     roles: [
-      "Redactor"
+      "Redactor","Contenidista"
     ]
   },
   {
@@ -272,7 +272,8 @@ export const circuleros: Circulero[] = [
     apodo: "Gastón",
     image: "img-gaston",
     roles: [
-      "DP"
+      "DP",
+      "Planner"
     ]
   },
   {
@@ -372,7 +373,7 @@ export const circuleros: Circulero[] = [
     apodo: "Mica",
     image: "img-mica-robledo",
     roles: [
-      "Diseñador/a"
+      "Diseñador/a","Contenidista"
     ]
   },
   {
@@ -390,7 +391,7 @@ export const circuleros: Circulero[] = [
     apodo: "Andrés",
     image: "img-andres",
     roles: [
-      "Redactor", "Director/a de Arte"
+      "Redactor", "Director/a de Arte","Contenidista"
     ]
   },
   {
@@ -496,6 +497,22 @@ export const preguntas: Array<Question> = [
   },
   {
     id:3,
+    pregunta:"Solo nos falta IT",
+    roles:[
+      {
+        buscado:"Contenidista",
+        correcto:["Contenidista","Contenidista de Marketing"],
+        descripcion:"El/a <span class='font-bold'>CONTENIDISTA</span> nos ayudará en el contenido :)"
+      },
+      {
+        buscado:"Planner",
+        correcto:["Planner","Data Analyst en Marketing","Planner de Pauta"],
+        descripcion:"El <span class='font-bold'>PLANNER</span> nos ayudará definir las estrategias digitales que se llevarán a cabo para cumplir con los objetivos de la campaña."
+      }
+    ]
+  },
+  {
+    id:4,
     pregunta:"Solo nos falta IT",
     roles:[
       {
