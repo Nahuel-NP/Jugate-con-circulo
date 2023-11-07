@@ -466,9 +466,9 @@ export const preguntas: Array<Question> = [
     pregunta: "Sumemos a Creatividad",
     roles:[
       {
-        buscado:"Dr de Arte",
+        buscado:"Dir. de Arte",
         correcto:["Director/a de Arte","Director/a de Creatividad"],
-        descripcion:"Necesitamos un <span class='font-bold'>DR CREATIVO</span> que se encargará de la estrategia visual."
+        descripcion:"Necesitamos un <span class='font-bold'>DIR. DE ARTE</span> que se encargará de la estrategia visual."
       },
       {
         buscado:"Redactor",
@@ -488,9 +488,9 @@ export const preguntas: Array<Question> = [
         descripcion:"Necesitamos primer <span class='font-bold'>DISEÑADOR/A</span> que se encargará de plasmar visualemente todas las estrategias, discurso y objetivos planteados."
       },
       {
-        buscado:"Diseñador",
-        correcto:["Diseñador/a"],
-        descripcion:"El otro <span class='font-bold'>DISEÑADOR/A</span>se encargará de darle una segunda mirada al proyecto y socorrer al Diseñador principal con todo lo que necesite durante el proceso."
+        buscado:"Audiovisualista",
+        correcto:["Audiovisualista"],
+        descripcion:"Y nuestro/a <span class='font-bold'>AUDIOVISUALISTA</span> se encargará de dirigir el proyecto desde el enfoque audiovisual. Esta persona puede ser animadora, editora o productora."
       }
     ]
   },
