@@ -3,6 +3,14 @@ import { useGameStore } from "../../store/gameStore";
 import { useModalStore } from "../../store/modalStore";
 import StarsContainer from "../StarsContainer";
 
+const MESSAGES = [
+  'Conseguiste tu primer estrella',
+  'Conseguiste tu segunda estrella',
+  'Conseguiste tu tercera estrella',
+  'Conseguiste tu cuarta estrella',
+  'Conseguiste tu quinta estrella',
+]
+
 const CorrectModal = () => {
 
   const setCorrectModal = useModalStore(state => state.setCorrectModal)
@@ -26,6 +34,7 @@ const CorrectModal = () => {
 
       <StarsContainer quantity={level + 1} />
       <img src={`/images/levels/level-${level + 1}.svg`} className="my-4" alt="congratulations" />
+      <p className="mb-5 text-xl font-semibold text-white">{MESSAGES[level]}</p>
       {
         (level + 1) === 3 &&
 
