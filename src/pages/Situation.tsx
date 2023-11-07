@@ -8,6 +8,8 @@ import "swiper/css/pagination";
 
 import useTransition from '../hooks/useTransition';
 import { useMediaQuery } from '../hooks/useMediaQuery';
+import { useEffect } from 'react';
+import { useGameStore } from '../store/gameStore';
 
 
 
@@ -27,6 +29,13 @@ const Situation = () => {
   const handleRoute = (route: string) => {
     handletransition(route)
   }
+
+  const restoreLevel = useGameStore(state => state.restoreStage)
+  
+  useEffect(() => {
+    console.log('restaura');
+    restoreLevel()
+  }, [restoreLevel]);
 
   return (
 
