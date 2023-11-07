@@ -97,7 +97,7 @@ const Game = () => {
 
   return (
     < section className="relative z-10 flex flex-col bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat  items-center w-full min-h-screen py-10 lg:pt-24 md:pt-0 " style={{ viewTransitionName: 'view' }}>
-      <div className="container px-8 py-4 md:mt-14">
+      <div className="container px-8 py-4 md:mt-10">
         <DndContext sensors={sensors} autoScroll={false} collisionDetection={closestCenter} onDragEnd={drawEnd}>
 
           <div className="grid justify-center max-w-6xl gap-2 mx-auto text-sm xl:pb-10 lg:gap-4 xl:gap-y-12 lg:grid-cols-5">
