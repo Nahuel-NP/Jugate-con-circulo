@@ -10,7 +10,7 @@ const Home = () => {
   }
 
   return (
-    <div className="relative z-10 flex flex-col items-center justify-center w-full min-h-screen gap-6 bg-center bg-cover saturate-150" style={{ viewTransitionName: 'view', background: 'linear-gradient(90deg, rgba(29, 183, 179, 0.50) 0%, rgba(45, 169, 182, 0.50) 19%, rgba(88, 132, 188, 0.50) 56%, rgba(145, 83, 197, 0.50) 100% )' }}>
+    <div className="relative bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat z-10 flex flex-col items-center justify-center w-full min-h-screen gap-6  " style={{ viewTransitionName: 'view' }}>
       <img src="/images/circulo-logo.svg" alt="Logo Circulo" className="w-[50px] md:w-[70px]" />
       <StarsContainer quantity={5} clases="max-w-[30px] md:max-w-[45px]" />
       <h1 className="text-4xl italic font-bold md:text-5xl text-c-yellow">#EquipoEstrella</h1>

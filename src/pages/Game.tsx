@@ -104,7 +104,7 @@ const Game = () => {
   }
 
   return (
-    < section className="z-50 flex flex-col items-center w-full min-h-screen py-24 lg:pt-24 md:pt-12 saturate-150" style={{ viewTransitionName: 'view', background: 'linear-gradient(90deg, rgba(53, 19, 96, 0.50) 0%, rgba(29, 183, 179, 0.50) 100%)' }}>
+    < section className="relative z-10 flex flex-col bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat  items-center w-full min-h-screen py-24 lg:pt-24 md:pt-12 " style={{ viewTransitionName: 'view' }}>
       <div className="container px-8 py-4 md:mt-14">
         <DndContext sensors={sensors} autoScroll={false} collisionDetection={closestCenter} onDragEnd={drawEnd}>
 
@@ -151,7 +151,7 @@ const Game = () => {
           </div>
         </DndContext>
       </div>
-      <button onClick={comprobar} disabled={!firstSelectedCirculero || !secondSelectedCirculero} className="px-6 py-2 mt-4 font-bold rounded-full lg:mt-0 disabled:bg-gray-300 bg-c-yellow"> Continuar </button>
+      <button onClick={comprobar} disabled={!firstSelectedCirculero || !secondSelectedCirculero} className="px-6 py-3 mt-4 font-bold rounded-full shadow-md shadow-black lg:mt-0 disabled:bg-gray-300 bg-c-yellow"> Continuar </button>
     </section>
   );
 }
