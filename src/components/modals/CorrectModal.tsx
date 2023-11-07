@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useGameStore } from "../../store/gameStore";
 import { useModalStore } from "../../store/modalStore";
 import StarsContainer from "../StarsContainer";
@@ -8,11 +9,18 @@ const CorrectModal = () => {
   const incrementLevel = useGameStore(state => state.incrementLevel)
   const resetSelectedCirculeros = useGameStore(state => state.resetSelectedCirculeros)
   const level = useGameStore(state => state.stage)
-  const nextLevel = () => {
-    setCorrectModal(false)
-    incrementLevel()
-    resetSelectedCirculeros()
-  }
+  
+  useEffect(() => {
+    const nextLevel = () => {
+      setCorrectModal(false)
+      incrementLevel()
+      resetSelectedCirculeros()
+    }
+    setTimeout(()=>{
+      nextLevel()
+    },3000)
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center gap-6">
 
@@ -26,7 +34,7 @@ const CorrectModal = () => {
           <div className="w-[185.11px] h-[23.95px] left-[6.63px] top-[9.79px] absolute origin-top-left rotate-[-6.45deg] text-center text-zinc-900 text-xl font-bold font-['Rubik']">#SegundoFrancia</div>
         </div>
       }
-      <button className="px-6 py-2 mx-auto font-bold rounded-full bg-c-yellow" onClick={nextLevel}>Continuar</button>
+      {/* <button className="px-6 py-2 mx-auto font-bold rounded-full bg-c-yellow" onClick={nextLevel}>Continuar</button> */}
     </div>
   );
 }
