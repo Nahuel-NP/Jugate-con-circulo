@@ -74,9 +74,10 @@ const MainLayout = () => {
             {
               ["1", "2", "3", "4", "5"].map((item, index) =>
                 <>
-                  {(stage > index) ? <img key={item} src="/images/icons/star-correct.svg" alt="full star" className="max-w-[50px] animate-jump animate-thrice animate-duration-500 animate-delay-500" />
+                  {(stage > index) ?
+                  <img key={item} src="/images/icons/star-correct.svg" alt="full star" className="max-w-[30px] lg:max-w-[50px] animate-jump animate-thrice animate-duration-500 animate-delay-500" />
                     :
-                    <img key={item} src="/images/icons/star-false.svg" alt="empty star" className="max-w-[50px]" />}
+                  <img key={item} src="/images/icons/star-false.svg" alt="empty star" className="max-w-[30px] lg:max-w-[50px]" />}
                 </>
               )}
           </div>
