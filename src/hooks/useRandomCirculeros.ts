@@ -20,6 +20,9 @@ export const useRandomCirculeros = (stage: number) => {
 
   const circulerosToShow = [...others,...correctas]
   
+  circulerosToShow.sort(function () {
+    return Math.random() - 0.5;
+  });
 
   
   return {
