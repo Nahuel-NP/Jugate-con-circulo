@@ -40,7 +40,7 @@ interface Error {
 export const useGameStore = create<GameStore>((set) => ({
   stage: 0,
   incrementLevel: () => set((state) => ({ stage: ++state.stage,currentQuestion: preguntas[state.stage]})),
-  restoreStage: () => set({ stage: 0 }),
+  restoreStage: () => set({ stage: 0,currentQuestion: preguntas[0]  }),
   team: [],
   addPartner: (partner: Circulero, rol: string) => set((state) => ({ team: [...state.team, { circulero: partner, rol }] })),
   hasError: false,
