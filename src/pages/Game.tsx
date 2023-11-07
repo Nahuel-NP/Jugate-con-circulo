@@ -86,25 +86,17 @@ const Game = () => {
 
       setCorrectModal(true)
       // Agrega al team
-      console.log(question);
       if (question) {
-        console.log('ejecuta?');
         addPartner(firstSelectedCirculero!, question?.roles[0].buscado)
         addPartner(secondSelectedCirculero!, question?.roles[1].buscado)
       }
       resetErrors()
     }
-
-    // setSelectedCirculero({
-    //   firstCirculero: null,
-    //   secondCirculero: null
-    // })
     
-
   }
 
   return (
-    < section className="relative z-10 flex flex-col bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat  items-center w-full min-h-screen py-24 lg:pt-24 md:pt-12 " style={{ viewTransitionName: 'view' }}>
+    < section className="relative z-10 flex flex-col bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat  items-center w-full min-h-screen py-10 lg:pt-24 md:pt-0 " style={{ viewTransitionName: 'view' }}>
       <div className="container px-8 py-4 md:mt-14">
         <DndContext sensors={sensors} autoScroll={false} collisionDetection={closestCenter} onDragEnd={drawEnd}>
 
