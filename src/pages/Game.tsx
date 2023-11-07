@@ -122,6 +122,7 @@ const Game = () => {
                   {circuleros && circuleros.map(item => (
                     <Draggable disabled={item == firstSelectedCirculero || secondSelectedCirculero == item} id={item.id.toString()} key={item.id} circulero={item} />))
                   }
+                <p className="col-span-5 text-center text-c-yellow">Arrastrá un circulover hacia la tarjeta del rol</p>
                 </div>
               </Droppable>
             </div>
