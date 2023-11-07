@@ -2,9 +2,9 @@ import { useState} from 'react';
 
 interface Props {
   quantity?: number
-  starWidth?: string
+  clases?: string
 }
-const StarsContainer = ({ quantity = 0,starWidth='auto' }: Props) => {
+const StarsContainer = ({ quantity = 0,clases='' }: Props) => {
 
   const [stars] = useState(new Array(quantity).fill('star'));
 
@@ -12,7 +12,7 @@ const StarsContainer = ({ quantity = 0,starWidth='auto' }: Props) => {
     <div className='flex justify-center gap-2'>
       {
         stars.map((_, index) => (
-          <img src="/images/icons/star-correct.svg" className={`max-w-[${starWidth}]`}    alt="star" key={index} />
+          <img src="/images/icons/star-correct.svg" className={`${clases}`}    alt="star" key={index} />
         ))
       }
     </div>
