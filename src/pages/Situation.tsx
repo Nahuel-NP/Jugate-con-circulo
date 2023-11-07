@@ -30,8 +30,8 @@ const Situation = () => {
 
   return (
 
-    <section className="relative flex items-center justify-center w-full min-h-screen py-24 md:pt-4 saturate-150" style={{ viewTransitionName: 'view', background: 'linear-gradient(90deg, rgba(145, 83, 197, 0.50) 0%, rgba(53, 19, 96, 0.50) 99.99%)' }} >
-      <div className="container flex flex-col items-center justify-center gap-4 p-4 text-center ">
+    <section className="relative flex items-center justify-center w-full min-h-screen py-10 md:pt-4 saturate-150" style={{ viewTransitionName: 'view', background: 'linear-gradient(90deg, rgba(145, 83, 197, 0.50) 0%, rgba(53, 19, 96, 0.50) 99.99%)' }} >
+      <div className="container flex flex-col items-center justify-center gap-2 p-4 text-center lg:gap-4 ">
         <h2 className="text-xl tracking-wide uppercase text-c-yellow">
           BUENAS NOTICIAS:
         </h2>
@@ -77,7 +77,7 @@ const Situation = () => {
 
         }
 
-        <button onClick={() => handleRoute('/game')} className="px-6 py-2 mt-2 text-lg font-bold text-black transition-transform rounded-full lg:mt-8 hover:scale-105 bg-c-yellow">Perfecto</button>
+        <button onClick={() => handleRoute('/game')} className="px-6 py-3 mt-2 text-lg font-bold text-black transition-transform rounded-full shadow-md shadow-black lg:mt-8 hover:scale-105 bg-c-yellow">Perfecto</button>
 
       </div>
     </section>
