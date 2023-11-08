@@ -502,7 +502,7 @@ export const preguntas: Array<Question> = [
       {
         buscado:"Contenidista",
         correcto:["Contenidista","Contenidista de Marketing"],
-        descripcion:"El/a <span class='font-bold'>CONTENIDISTA</span> nos ayudará en el contenido :)"
+        descripcion:"El/a <span class='font-bold'>CONTENIDISTA</span> nos ayudará a encontrar una estrategia comunicacional acorde a los objetivos planteados."
       },
       {
         buscado:"Planner",
