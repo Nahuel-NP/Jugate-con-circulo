@@ -97,11 +97,11 @@ const Game = () => {
 
   return (
     < section className="relative z-10 flex flex-col bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat  items-center w-full min-h-screen py-10 lg:pt-24 md:pt-0 " style={{ viewTransitionName: 'view' }}>
-      <div className="container px-8 py-4 md:mt-10">
+      <div className="container px-8 py-4 md:mt-10 lg:mt-4 xl:mt-6 2xl:mt-16">
         <DndContext sensors={sensors} autoScroll={false} collisionDetection={closestCenter} onDragEnd={drawEnd}>
 
-          <div className="grid justify-center max-w-6xl gap-2 mx-auto text-sm xl:pb-10 lg:gap-4 xl:gap-y-12 lg:grid-cols-5">
-            <div className=" lg:col-start-1 lg:col-span-2 justify-self-end  self-end w-full  min-h-[150px] max-w-sm   md:max-w-sm ">{/* seleccion 1 */}
+          <div className="grid justify-center max-w-6xl gap-2 mx-auto text-sm xl:pb-0 lg:gap-4 xl:gap-y-12 2xl:pt-4 lg:grid-cols-5">
+            <div className=" lg:col-start-1 lg:col-span-2 justify-self-end  self-end w-full  min-h-[150px] max-w-sm   lg:max-w-xs  xl:max-w-sm ">{/* seleccion 1 */}
               <Droppable id="first" >
 
                 {
@@ -111,14 +111,14 @@ const Game = () => {
                     </div>
                     :
                     <div className="relative flex items-center justify-center w-full p-4 h-36 bg-c-magenta before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
-                      <p className="text-white lg:text-base animate-fade animate-once animate-duration-1000 animate-ease-in-out animate-normal animate-fill-forwards" dangerouslySetInnerHTML={{ __html: question ? question?.roles[0].descripcion : '' }} />
+                      <p className="text-white xl:text-sm 2xl:text-base animate-fade animate-once animate-duration-1000 animate-ease-in-out animate-normal animate-fill-forwards" dangerouslySetInnerHTML={{ __html: question ? question?.roles[0].descripcion : '' }} />
                     </div>
                 }
               </Droppable>
             </div>
             <div className="my-4 lg:col-start-3 lg:row-span-2 lg:col-span-3">
               <Droppable id="grid">
-                <div className="grid max-w-sm grid-cols-5 gap-2 xl:gap-4 lg:max-w-lg xl:max-w-2xl">
+                <div className="grid max-w-sm grid-cols-5 gap-2 lg:gap-2 xl:gap-3 2xl:gap-4 lg:max-w-lg xl:max-w-2xl">
                   {circuleros && circuleros.map(item => (
                     <Draggable disabled={item == firstSelectedCirculero || secondSelectedCirculero == item} id={item.id.toString()} key={item.id} circulero={item} />))
                   }
@@ -126,7 +126,7 @@ const Game = () => {
                 </div>
               </Droppable>
             </div>
-            <div className=" lg:col-start-1  justify-self-end w-full  lg:col-span-2 relative min-h-[150px] max-w-sm  self-start  md:max-w-sm   ">{/* seleccion 2 */}
+            <div className=" lg:col-start-1  justify-self-end w-full  lg:col-span-2 relative min-h-[150px] max-w-sm  self-start  lg:max-w-xs  xl:max-w-sm ">{/* seleccion 2 */}
               <Droppable id="second" >
                 {
                   secondSelectedCirculero ?
@@ -135,7 +135,7 @@ const Game = () => {
                     </div>
                     :
                     <div className="relative flex items-center justify-center w-full p-4 text-black h-36 bg-c-cyan before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
-                      <p className="text-black lg:text-base animate-fade animate-once animate-duration-1000 animate-ease-in-out animate-normal animate-fill-forwards" dangerouslySetInnerHTML={{ __html: question ? question?.roles[1].descripcion : '' }} />
+                      <p className="text-sm text-black 2xl:text-base animate-fade animate-once animate-duration-1000 animate-ease-in-out animate-normal animate-fill-forwards" dangerouslySetInnerHTML={{ __html: question ? question?.roles[1].descripcion : '' }} />
 
                     </div>
                 }

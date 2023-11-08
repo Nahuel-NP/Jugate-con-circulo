@@ -54,7 +54,7 @@ const MainLayout = () => {
         {showBar && <div style={{ viewTransitionName: 'rocket' }}
           className="absolute top-0 left-0 z-50 grid  w-full h-16 grid-cols-4 md:grid-cols-2  animate-fade-left animate-once animate-duration-500 animate-delay-[1000ms] animate-ease-linear lg:h-28  ">
           <div className={`${stage === 0 ? 'col-start-2' : 'col-span-2'} +' col-span-3 relative bottom-0 left-0 w-full h-0  border-b-8 border-dotted border-c-cyan transition-[border]'`} />
-          <div className="relative items-center justify-center hidden col-start-1 row-start-1 mx-auto text-lg lg:flex ">
+          <div className="relative items-center justify-center hidden col-start-1 row-start-1 mx-auto xl:text-lg lg:flex ">
             <p className=" text-c-yellow">{currentQuestion.pregunta}
               <span className="px-4 py-2 ml-2 text-white uppercase shadow-md bg-c-magenta shadow-black ">{currentQuestion.roles[0].buscado}</span>
               <span className="mx-2 text-lg font-bold text-white shadow-md">+</span>
@@ -66,13 +66,13 @@ const MainLayout = () => {
               ["1a", "2a", "3a", "4a", "5a"].map((item, index) =>
                 <React.Fragment key={item}>
                   {(stage > index) ?
-                    <img key={item} src="/images/icons/star-correct.svg" alt="full star" className="max-w-[30px] lg:max-w-[50px] animate-jump animate-thrice animate-duration-500 animate-delay-500" />
+                    <img key={item} src="/images/icons/star-correct.svg" alt="full star" className="max-w-[30px] lg:max-w-[40px] xl:max-w-[50px] animate-jump animate-thrice animate-duration-500 animate-delay-500" />
                     :
-                    <img key={item + index} src="/images/icons/star-false.svg" alt="empty star" className="max-w-[30px] lg:max-w-[50px]" />}
+                    <img key={item + index} src="/images/icons/star-false.svg" alt="empty star" className="max-w-[30px] lg:max-w-[40px] xl:max-w-[50px]" />}
                 </React.Fragment>
               )}
           </div>
-          <img src="/images/rocket.gif" alt="rocket" className="absolute z-50 w-full 2xl:max-w-[200px] lg:max-w-[170px] max-w-[150px] -translate-x-1/3  top-full lg:top-2/3 -translate-y-1/2 lg:-translate-y-1/3 left-1/4 md:left-1/2" />
+          <img src="/images/rocket.gif" alt="rocket" className="absolute z-50 w-full 2xl:max-w-[200px]  max-w-[150px] -translate-x-1/3  top-full lg:top-2/3 -translate-y-1/2 lg:-translate-y-1/3 left-1/4 md:left-1/2" />
         </div>
         }
         {showBar &&

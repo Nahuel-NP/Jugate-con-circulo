@@ -486,7 +486,7 @@ export const preguntas: Array<Question> = [
       {
         buscado:"Diseñador",
         correcto:["Diseñador/a"],
-        descripcion:"Necesitamos primer <span class='font-bold'>DISEÑADOR/A</span> que se encargará de plasmar visualemente todas las estrategias, discurso y objetivos planteados."
+        descripcion:"Necesitamos un/a <span class='font-bold'>DISEÑADOR/A</span> que se encargará de plasmar visualemente todas las estrategias, discurso y objetivos planteados."
       },
       {
         buscado:"Audiovisualista",
