@@ -143,7 +143,7 @@ export const circuleros: Circulero[] = [
   {
     id: 13,
     name: "Kek Danisa",
-    apodo: "Dabus",
+    apodo: "Danis",
     image: "img-danisa",
     roles: [
       "Diseñador/a IT"
@@ -497,7 +497,7 @@ export const preguntas: Array<Question> = [
   },
   {
     id:3,
-    pregunta:"Solo nos falta IT",
+    pregunta:"Armemos el equipo de Marketing",
     roles:[
       {
         buscado:"Contenidista",
