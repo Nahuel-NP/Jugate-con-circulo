@@ -10,6 +10,7 @@ import { useVerifyAnswer } from "../hooks/useVerifyAnswer";
 import { useTutorialModal } from "../hooks/useTutorialModal";
 
 import { Circulero } from '../data/circuleros';
+import { useNavigate } from "react-router-dom";
 
 
 export interface CirculerosState {
@@ -35,6 +36,7 @@ const Game = () => {
 
   const { hasError, resetErrors } = useVerifyAnswer(question)
 
+  const navigate = useNavigate()
   useEffect(() => {
     const { circuleros: circuleros20} = useRandomCirculeros(stage)
 
@@ -84,13 +86,17 @@ const Game = () => {
       setErrorModal(true)
     } else {
 
-      setCorrectModal(true)
       // Agrega al team
       if (question) {
         addPartner(firstSelectedCirculero!, question?.roles[0].buscado)
         addPartner(secondSelectedCirculero!, question?.roles[1].buscado)
       }
       resetErrors()
+      if (stage !== 4) {
+        setCorrectModal(true)
+      }else{
+        return navigate('/congratulations')
+      }
     }
     
   }

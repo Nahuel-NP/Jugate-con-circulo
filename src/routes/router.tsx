@@ -3,6 +3,7 @@ import Home from '../pages/Home';
 import MainLayout from "../layouts/MainLayout";
 import Situation from "../pages/Situation";
 import Game from "../pages/Game";
+import Congratulations from "../pages/Congratulations";
 
 export const router = createBrowserRouter(
   [
@@ -22,6 +23,10 @@ export const router = createBrowserRouter(
           {
             path: "/game",
             element:<Game/>
+          },
+          {
+            path: "/congratulations",
+            element:<Congratulations/>
           }
         ]
     }

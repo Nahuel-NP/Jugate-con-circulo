@@ -28,6 +28,10 @@ const MainLayout = () => {
         setBackgroundPosition('50%,0%')
         setShowBar(true)
         break;
+      case '/congratulations':
+        setBackgroundPosition('65%,0%')
+        setShowBar(false)
+        break;
 
       default:
         break;
