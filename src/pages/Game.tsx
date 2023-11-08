@@ -111,7 +111,7 @@ const Game = () => {
                     </div>
                     :
                     <div className="relative flex items-center justify-center w-full p-4 h-36 bg-c-magenta before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
-                      <p className="text-white lg:text-base" dangerouslySetInnerHTML={{ __html: question ? question?.roles[0].descripcion : '' }} />
+                      <p className="text-white lg:text-base animate-fade animate-once animate-duration-1000 animate-ease-in-out animate-normal animate-fill-forwards" dangerouslySetInnerHTML={{ __html: question ? question?.roles[0].descripcion : '' }} />
                     </div>
                 }
               </Droppable>
@@ -135,7 +135,7 @@ const Game = () => {
                     </div>
                     :
                     <div className="relative flex items-center justify-center w-full p-4 text-black h-36 bg-c-cyan before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
-                      <p className="text-black lg:text-base" dangerouslySetInnerHTML={{ __html: question ? question?.roles[1].descripcion : '' }} />
+                      <p className="text-black lg:text-base animate-fade animate-once animate-duration-1000 animate-ease-in-out animate-normal animate-fill-forwards" dangerouslySetInnerHTML={{ __html: question ? question?.roles[1].descripcion : '' }} />
 
                     </div>
                 }
