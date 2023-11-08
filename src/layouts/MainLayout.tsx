@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { useModalStore } from "../store/modalStore";
 import Modal from "../components/Modal";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import TutorialModal from "../components/modals/TutorialModal";
 import FailModasl from "../components/modals/FailModasl";
 import { useGameStore } from "../store/gameStore";
@@ -64,12 +64,12 @@ const MainLayout = () => {
           <div className="flex justify-end col-span-4 col-start-1 row-start-1 gap-1 py-4 md:col-span-2 lg:justify-center lg:col-start-2">
             {
               ["1a", "2a", "3a", "4a", "5a"].map((item, index) =>
-                <>
+                <React.Fragment key={item}>
                   {(stage > index) ?
                     <img key={item} src="/images/icons/star-correct.svg" alt="full star" className="max-w-[30px] lg:max-w-[50px] animate-jump animate-thrice animate-duration-500 animate-delay-500" />
                     :
                     <img key={item + index} src="/images/icons/star-false.svg" alt="empty star" className="max-w-[30px] lg:max-w-[50px]" />}
-                </>
+                </React.Fragment>
               )}
           </div>
           <img src="/images/rocket.gif" alt="rocket" className="absolute z-50 w-full 2xl:max-w-[200px] lg:max-w-[170px] max-w-[150px] -translate-x-1/3  top-full lg:top-2/3 -translate-y-1/2 lg:-translate-y-1/3 left-1/4 md:left-1/2" />
