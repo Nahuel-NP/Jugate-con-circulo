@@ -54,3 +54,8 @@
   height: 15px !important;
   
 }
+
+.secure-min-h{
+  min-height: 100vh;
+  min-height: 100dvh;
+}

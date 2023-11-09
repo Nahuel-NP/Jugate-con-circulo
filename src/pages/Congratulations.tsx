@@ -44,10 +44,10 @@ const Congratulations = () => {
   }, []);
 
   return (
-    <section className="relative z-10 flex items-center justify-center w-full min-h-screen py-10 md:pt-4  bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat" style={{ viewTransitionName: 'view', background: '' }} >
+    <section className="relative z-10 flex items-center justify-center w-full secure-min-h py-10 md:pt-4  bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat" style={{ viewTransitionName: 'view', background: '' }} >
       <h2>Congratulations</h2>
       <div className="absolute bottom-0 left-0 animate-fade-right animate-twice animate-duration-[5000ms] animate-delay-[1500ms] animate-alternate">
-        <p className="text-xs text-c-yellow xl:text-base text-end">Están lloviendo estrellas</p>
+        <p className="text-xs text-c-yellow xl:text-base text-end max-w-[150px] xl:max-w-[250px]">Están lloviendo estrellas 🎵</p>
         <img src="/images/castro.gif" alt="cristian castro" className="xl:max-w-[250px] max-w-[150px] " />
       </div>
     </section>

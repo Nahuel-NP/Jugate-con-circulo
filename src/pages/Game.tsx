@@ -102,7 +102,7 @@ const Game = () => {
   }
 
   return (
-    < section className="relative z-10 flex flex-col bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat  items-center w-full min-h-screen py-10 lg:pt-24 md:pt-0 " style={{ viewTransitionName: 'view' }}>
+    < section className="relative z-10 flex flex-col bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat  items-center w-full secure-min-h py-10 lg:pt-24 md:pt-0 " style={{ viewTransitionName: 'view' }}>
       <div className="container px-8 py-4 md:mt-10 lg:mt-4 xl:mt-6 2xl:mt-16">
         <DndContext sensors={sensors} autoScroll={false} collisionDetection={closestCenter} onDragEnd={drawEnd}>
 

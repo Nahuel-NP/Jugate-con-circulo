@@ -39,7 +39,7 @@ const Situation = () => {
 
   return (
 
-    <section className="relative z-10 flex items-center justify-center w-full min-h-screen py-10 md:pt-4  bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat" style={{ viewTransitionName: 'view', background: '' }} >
+    <section className="relative z-10 flex items-center justify-center w-full secure-min-h py-10 md:pt-4  bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat" style={{ viewTransitionName: 'view', background: '' }} >
       <div className="container flex flex-col items-center justify-center gap-2 p-4 text-center lg:gap-4 ">
         <h2 className="text-xl tracking-wide uppercase text-c-yellow">
           BUENAS NOTICIAS:
