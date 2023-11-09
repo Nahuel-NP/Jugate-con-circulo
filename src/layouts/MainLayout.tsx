@@ -57,7 +57,7 @@ const MainLayout = () => {
 
         {showBar && <div style={{ viewTransitionName: 'rocket' }}
           className="absolute top-0 left-0 z-50 grid  w-full h-16 grid-cols-4 md:grid-cols-2  animate-fade-left animate-once animate-duration-500 animate-delay-[1000ms] animate-ease-linear lg:h-28  ">
-          <div className={`${stage === 0 ? 'col-start-2' : 'col-span-2'} +' col-span-3 relative bottom-0 left-0 w-full h-0  border-b-8 border-dotted border-c-cyan transition-[border]'`} />
+          <div className={`${stage === 0 ? 'col-start-2' : 'col-span-4 md:col-span-2'} +' col-span-3 relative bottom-0 left-0 w-full h-0  border-b-8 border-dotted border-c-cyan transition-[border]'`} />
           <div className="relative items-center justify-center hidden col-start-1 row-start-1 mx-auto xl:text-lg lg:flex ">
             <p className=" text-c-yellow">{currentQuestion.pregunta}
               <span className="px-4 py-2 ml-2 text-white uppercase shadow-md bg-c-magenta shadow-black ">{currentQuestion.roles[0].buscado}</span>
