@@ -21,6 +21,10 @@ interface GameStore {
   setFirstSelectedCirculero: (circulero: Circulero | null) => void;
   setSecondSelectedCirculero: (circulero: Circulero | null) => void;
   resetSelectedCirculeros: () => void;
+  teamName:string;
+  userName:string;
+  setTeamName: (teamName:string) => void;
+  setUserName: (userName:string) => void;
 }
 
 interface Partner {
@@ -61,6 +65,10 @@ export const useGameStore = create<GameStore>((set) => ({
   setFirstSelectedCirculero: (firstSelectedCirculero) => set({ firstSelectedCirculero }),
   setSecondSelectedCirculero: (secondSelectedCirculero) => set({ secondSelectedCirculero }),
   resetSelectedCirculeros: () => set({ firstSelectedCirculero: null, secondSelectedCirculero: null }),
+  teamName:'',
+  userName:'',
+  setTeamName:(teamName) => set({teamName}),
+  setUserName:(userName) => set({userName})
 
 }
 ));
