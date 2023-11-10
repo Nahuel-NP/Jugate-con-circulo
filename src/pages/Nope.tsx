@@ -32,7 +32,7 @@ const Nope = () => {
   return (
     <div  className=" relative bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat z-10 flex flex-col items-center justify-center w-full secure-min-h gap-6  " style={{ viewTransitionName: 'view' }}>
       <img src="/images/tramposo.gif" alt="Logo Circulo" className="w-full max-w-md" />
-      <button onClick={() => handleRoute('/situation')} className="px-6 py-3 mt-6 text-lg font-bold text-black transition-transform rounded-full shadow-md shadow-slate-900 hover:scale-105 bg-c-yellow ">Sin trampa</button>
+      <button onClick={() => handleRoute('/situation')} className="px-6 py-3 mt-6 text-lg font-bold text-black transition-transform rounded-full shadow-md shadow-slate-900 hover:scale-105 bg-c-yellow ">A Jugar!</button>
     </div>
   );
 }

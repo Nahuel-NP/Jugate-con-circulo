@@ -3,6 +3,7 @@ import { ChangeEvent, useEffect } from "react";
 import { useGameStore } from "../store/gameStore";
 import useTransition from "../hooks/useTransition";
 import { useNavigate } from "react-router-dom";
+import { circuleros } from "../data/circuleros";
 
 
 
@@ -17,6 +18,8 @@ const Congratulations = () => {
   const setTeamName = useGameStore(state => state.setTeamName)
   const attemps = useGameStore(state => state.attemps)
   const setUserName = useGameStore(state => state.setUserName)
+  const addPartner = useGameStore(state => state.addPartner)
+
 
   const handleData = (evt: ChangeEvent<HTMLInputElement>) => {
     evt.preventDefault()
@@ -32,6 +35,9 @@ const Congratulations = () => {
 
 
   useEffect(() => {
+    const admins = circuleros!.filter(circulero => circulero.roles.includes('Administrativo/a'))
+    addPartner(admins[1], 'Admin')
+    
     const duration = 15 * 1000;
     const animationEnd = Date.now() + duration;
     let skew = 1;
@@ -70,10 +76,10 @@ const Congratulations = () => {
         frame()
       }, 1500)
     }
-  }, [canPass,navigate]);
+  }, [canPass, navigate]);
 
   return (
-    <section  className=" relative z-10 flex flex-col px-4 gap-5 items-center justify-center w-full secure-min-h py-10 md:pt-4  bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat" style={{ viewTransitionName: 'view' }} >
+    <section className=" relative z-10 flex flex-col px-4 gap-5 items-center justify-center w-full secure-min-h py-10 md:pt-4  bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat" style={{ viewTransitionName: 'view' }} >
       <div
         className="absolute top-0 left-0 z-50 grid w-full h-16 grid-cols-4 md:grid-cols-2 lg:h-28 ">
         <div className='relative bottom-0 left-0 w-1/4 h-0 col-span-4 border-b-8 border-dotted animate-fade-left animate-once animate-duration-[1000ms] animate-delay-[1500ms] md:w-1/2 border-c-cyan' />

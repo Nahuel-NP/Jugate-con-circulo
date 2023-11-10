@@ -1,10 +1,11 @@
 import { create } from 'zustand';
 import { Circulero, Question, preguntas } from '../data/circuleros';
-// import zukeeper from 'zukeeper';
+import zukeeper from 'zukeeper';
 
 interface GameStore {
   stage: number;
   team: Array<Partner>;
+  resetTeam: () => void;
   incrementLevel: () => void;
   restoreStage: () => void;
   addPartner: (partner: Circulero, rol: string) => void;
@@ -46,7 +47,7 @@ interface Error {
 
 
 
-export const useGameStore = create<GameStore>((set) => ({
+export const useGameStore = create<GameStore>(zukeeper((set) => ({
   stage: 0,
   canPass: false,
   setCanPass: (canPass) => set({ canPass }),
@@ -61,6 +62,7 @@ export const useGameStore = create<GameStore>((set) => ({
   }),
   restoreStage: () => set({ stage: 0, currentQuestion: preguntas[0],attemps:1}),
   team: [],
+  resetTeam: () => set({ team: [] }),
   addPartner: (partner: Circulero, rol: string) => set((state) => ({ team: [...state.team, { circulero: partner, rol }] })),
   hasError: false,
   firstError: null,
@@ -80,7 +82,7 @@ export const useGameStore = create<GameStore>((set) => ({
   setTeamName:(teamName) => set({teamName}),
   setUserName:(userName) => set({userName})
 }
-));
+)));
 
 
 

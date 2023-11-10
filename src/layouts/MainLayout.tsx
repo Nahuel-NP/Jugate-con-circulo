@@ -32,6 +32,10 @@ const MainLayout = () => {
         setBackgroundPosition('65%,0%')
         setShowBar(false)
         break;
+      case '/team':
+        setBackgroundPosition('80%,0%')
+        setShowBar(false)
+        break;
 
       default:
         break;
@@ -49,7 +53,7 @@ const MainLayout = () => {
   return (
     <main id="capture" className="relative overflow-hidden bg-fixed bg-center bg-cover bg-montana saturate-[1.25] font-rubik">
       <div style={{
-        background: 'linear-gradient(90deg, rgba(29, 183, 179, 0.60) 0%, rgba(45, 169, 182, 0.50) 4%, rgba(88, 132, 188, 0.50) 12%, rgba(145, 83, 197, 0.50) 20%, rgba(145, 83, 197, 0.50) 30%, rgba(53, 19, 96, 0.50) 40%, rgba(53, 19, 96, 0.50) 50%, rgba(29, 183, 179, 0.50) 60% )',
+        background: 'linear-gradient(90deg, rgba(29, 183, 179, 0.60) 0%, rgba(45, 169, 182, 0.50) 4%, rgba(88, 132, 188, 0.50) 12%, rgba(145, 83, 197, 0.50) 20%, rgba(145, 83, 197, 0.50) 30%, rgba(53, 19, 96, 0.50) 40%, rgba(53, 19, 96, 0.50) 50%, rgba(29, 183, 179, 0.50) 60%, rgba(88, 132, 188, 0.50) 75.43%, rgba(145, 83, 197, 0.50) 99.99% )',
         transition: 'background 1500ms linear',
         backgroundPosition,
         backgroundSize: '500% 100%'

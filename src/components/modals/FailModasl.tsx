@@ -10,6 +10,7 @@ const FailModasl = () => {
   const setSecondError = useGameStore((state) => state.setSecondError)
   const resetQuestion = useGameStore((state) => state.resetQuestion)
   const resetSelectedCirculeros  = useGameStore((state) => state.resetSelectedCirculeros)
+  const resetTeam  = useGameStore((state) => state.resetTeam)
 
   const reset = () => {
     setErrorModal(false)
@@ -17,7 +18,7 @@ const FailModasl = () => {
     setSecondError(null)
     resetQuestion()
     resetSelectedCirculeros()
-  
+    resetTeam()
   }
 
   return (
