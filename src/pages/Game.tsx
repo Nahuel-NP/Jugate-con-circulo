@@ -66,6 +66,9 @@ const Game = () => {
     }
   }
 
+  const setCanPass = useGameStore(state => state.setCanPass)
+  const increaseAttemps = useGameStore(state => state.increaseAttemps)
+
   const firstSelectedCirculero = useGameStore(state => state.firstSelectedCirculero)
   const secondSelectedCirculero = useGameStore(state => state.secondSelectedCirculero)
 
@@ -82,8 +85,8 @@ const Game = () => {
   }
 
   const comprobar = () => {
-
     if (hasError) {
+      increaseAttemps()
       setErrorModal(true)
     } else {
 
@@ -96,6 +99,7 @@ const Game = () => {
       if (stage !== 4) {
         setCorrectModal(true)
       }else{
+        setCanPass(true)
         handletransition('/congratulations')
       }
     }
