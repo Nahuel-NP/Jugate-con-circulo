@@ -2,16 +2,20 @@ import confetti from "canvas-confetti";
 import { ChangeEvent, useEffect } from "react";
 import { useGameStore } from "../store/gameStore";
 import useTransition from "../hooks/useTransition";
+import { useNavigate } from "react-router-dom";
+
 
 
 
 const Congratulations = () => {
 
-  const {handletransition}= useTransition()
-
+  const { handletransition } = useTransition()
+  const navigate = useNavigate()
+  const canPass = useGameStore(state => state.canPass)
   const teamName = useGameStore(state => state.teamName)
   const userName = useGameStore(state => state.userName)
   const setTeamName = useGameStore(state => state.setTeamName)
+  const attemps = useGameStore(state => state.attemps)
   const setUserName = useGameStore(state => state.setUserName)
 
   const handleData = (evt: ChangeEvent<HTMLInputElement>) => {
@@ -23,8 +27,11 @@ const Congratulations = () => {
       setUserName(evt.target.value)
     }
   }
-  useEffect(() => {
 
+
+
+
+  useEffect(() => {
     const duration = 15 * 1000;
     const animationEnd = Date.now() + duration;
     let skew = 1;
@@ -56,14 +63,18 @@ const Congratulations = () => {
         requestAnimationFrame(frame);
       }
     }
-        setTimeout(() => {
-          frame()
-        }, 1500)
-  }, []);
+    if (!canPass) {
+      navigate('/tramposo')
+    } else {
+      setTimeout(() => {
+        frame()
+      }, 1500)
+    }
+  }, [canPass,navigate]);
 
   return (
-    <section className="relative z-10 flex flex-col px-4 gap-5 items-center justify-center w-full secure-min-h py-10 md:pt-4  bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat" style={{viewTransitionName: 'view'}} >
-      <div 
+    <section  className=" relative z-10 flex flex-col px-4 gap-5 items-center justify-center w-full secure-min-h py-10 md:pt-4  bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat" style={{ viewTransitionName: 'view' }} >
+      <div
         className="absolute top-0 left-0 z-50 grid w-full h-16 grid-cols-4 md:grid-cols-2 lg:h-28 ">
         <div className='relative bottom-0 left-0 w-1/4 h-0 col-span-4 border-b-8 border-dotted animate-fade-left animate-once animate-duration-[1000ms] animate-delay-[1500ms] md:w-1/2 border-c-cyan' />
 
@@ -78,7 +89,7 @@ const Congratulations = () => {
       </div>
       <h2 className="text-4xl font-bold lg:text-5xl text-c-yellow">¡FELICITACIONES!</h2>
       <p className="max-w-xs text-xl font-bold text-center text-white lg:text-2xl">¡Las tres campañas fueron un súper mega archi éxito en el mundo entero!</p>
-
+      <p>Numero de intentos {attemps}</p>
       <div className="flex flex-col w-full max-w-xs gap-2">
         <label className="text-xs text-white lg:text-sm" htmlFor="nombre" >Completá tu nombre</label>
         <input type="text" onChange={handleData} name="nombre" className="px-4 py-2 border rounded-md border-c-yellow" placeholder="Nombre" id="nombre" />
@@ -87,6 +98,7 @@ const Congratulations = () => {
         <label className="text-xs text-white lg:text-sm" htmlFor="team">Completá el nombre del Team</label>
         <input type="text" onChange={handleData} name="team" className="px-4 py-2 border rounded-md border-c-yellow" placeholder="Team" id="team" />
       </div>
+
       <button disabled={!teamName || !userName} onClick={() => handletransition('/team')} className="px-8 py-2 mt-4 font-medium rounded-full shadow-md disabled:bg-gray-400 bg-c-yellow shadow-black">Listo</button>
       <div className="absolute bottom-0 left-0 animate-fade-right animate-twice animate-duration-[5000ms] animate-delay-[1500ms] animate-alternate">
         <p className="text-[10px] text-c-yellow xl:text-base text-end max-w-[150px] xl:max-w-[250px]">Están lloviendo estrellas 🎵</p>
