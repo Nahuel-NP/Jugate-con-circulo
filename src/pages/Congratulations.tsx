@@ -1,13 +1,13 @@
 import confetti from "canvas-confetti";
 import { ChangeEvent, useEffect } from "react";
 import { useGameStore } from "../store/gameStore";
-import { useNavigate } from "react-router-dom";
+import useTransition from "../hooks/useTransition";
 
 
 
 const Congratulations = () => {
 
-  const navigate = useNavigate()
+  const {handletransition}= useTransition()
 
   const teamName = useGameStore(state => state.teamName)
   const userName = useGameStore(state => state.userName)
@@ -87,7 +87,7 @@ const Congratulations = () => {
         <label className="text-xs text-white lg:text-sm" htmlFor="team">Completá el nombre del Team</label>
         <input type="text" onChange={handleData} name="team" className="px-4 py-2 border rounded-md border-c-yellow" placeholder="Team" id="team" />
       </div>
-      <button disabled={!teamName || !userName} onClick={() => navigate('/result')} className="px-8 py-2 mt-4 font-medium rounded-full shadow-md disabled:bg-gray-400 bg-c-yellow shadow-black">Listo</button>
+      <button disabled={!teamName || !userName} onClick={() => handletransition('/team')} className="px-8 py-2 mt-4 font-medium rounded-full shadow-md disabled:bg-gray-400 bg-c-yellow shadow-black">Listo</button>
       <div className="absolute bottom-0 left-0 animate-fade-right animate-twice animate-duration-[5000ms] animate-delay-[1500ms] animate-alternate">
         <p className="text-[10px] text-c-yellow xl:text-base text-end max-w-[150px] xl:max-w-[250px]">Están lloviendo estrellas 🎵</p>
         <img src="/images/castro.gif" alt="cristian castro" className="xl:max-w-[250px] max-w-[150px] " />
