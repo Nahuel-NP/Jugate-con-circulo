@@ -5,6 +5,7 @@ import Situation from "../pages/Situation";
 import Game from "../pages/Game";
 import Congratulations from "../pages/Congratulations";
 import Team from "../pages/Team";
+import Nope from "../pages/Nope";
 
 export const router = createBrowserRouter(
   [
@@ -28,10 +29,16 @@ export const router = createBrowserRouter(
           {
             path: "/congratulations",
             element:<Congratulations/>
-          },
+          }
+          ,
           {
-            path:"team",
+            path:"/team",
             element:<Team/>
+          }
+          ,
+          {
+            path:"/tramposo",
+            element:<Nope/>
           }
         ]
     }
