@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { Circulero, Question, preguntas } from '../data/circuleros';
-import zukeeper from 'zukeeper';
+// import zukeeper from 'zukeeper';
 
 interface GameStore {
   stage: number;
@@ -47,7 +47,7 @@ interface Error {
 
 
 
-export const useGameStore = create<GameStore>(zukeeper((set) => ({
+export const useGameStore = create<GameStore>((set) => ({
   stage: 0,
   canPass: false,
   setCanPass: (canPass) => set({ canPass }),
@@ -82,7 +82,7 @@ export const useGameStore = create<GameStore>(zukeeper((set) => ({
   setTeamName:(teamName) => set({teamName}),
   setUserName:(userName) => set({userName})
 }
-)));
+));
 
 
 
