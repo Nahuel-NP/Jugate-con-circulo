@@ -37,17 +37,6 @@
 }
 
 
-
-::view-transition-old(mountains) {
-  animation: 1.5s linear leave-x;
-
-}
-
-::view-transition-new(mountains) {
-  animation: 1.5s linear enter-x;
-
-}
-
 .swiper-pagination-bullet{
   background-color: #FF4DCD !important;
   width: 15px !important;
