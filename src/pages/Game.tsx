@@ -10,7 +10,7 @@ import { useVerifyAnswer } from "../hooks/useVerifyAnswer";
 import { useTutorialModal } from "../hooks/useTutorialModal";
 
 import { Circulero } from '../data/circuleros';
-import { useNavigate } from "react-router-dom";
+import useTransition from "../hooks/useTransition";
 
 
 export interface CirculerosState {
@@ -21,7 +21,9 @@ export interface CirculerosState {
 const Game = () => {
 
   useTutorialModal()
-
+  
+  const { handletransition } = useTransition()
+  
   const setErrorModal = useModalStore((state) => (state.setErrorModal))
 
   const setCorrectModal = useModalStore((state)=> state.setCorrectModal)
@@ -36,7 +38,7 @@ const Game = () => {
 
   const { hasError, resetErrors } = useVerifyAnswer(question)
 
-  const navigate = useNavigate()
+  
   useEffect(() => {
     const { circuleros: circuleros20} = useRandomCirculeros(stage)
 
@@ -79,7 +81,6 @@ const Game = () => {
     }
   }
 
-
   const comprobar = () => {
 
     if (hasError) {
@@ -95,14 +96,14 @@ const Game = () => {
       if (stage !== 4) {
         setCorrectModal(true)
       }else{
-        return navigate('/congratulations')
+        handletransition('/congratulations')
       }
     }
     
   }
 
   return (
-    < section className="relative z-10 flex flex-col bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat  items-center w-full secure-min-h py-10 lg:pt-24 md:pt-0 " style={{ viewTransitionName: 'view' }}>
+    <section className="relative z-10 flex flex-col bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat  items-center w-full secure-min-h py-10 lg:pt-24 md:pt-0 " style={{ viewTransitionName: 'view'}}>
       <div className="container px-8 py-4 md:mt-10 lg:mt-4 xl:mt-6 2xl:mt-16">
         <DndContext sensors={sensors} autoScroll={false} collisionDetection={closestCenter} onDragEnd={drawEnd}>
 
