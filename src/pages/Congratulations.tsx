@@ -16,7 +16,7 @@ const Congratulations = () => {
   const teamName = useGameStore(state => state.teamName)
   const userName = useGameStore(state => state.userName)
   const setTeamName = useGameStore(state => state.setTeamName)
-  const attemps = useGameStore(state => state.attemps)
+  // const attemps = useGameStore(state => state.attemps)
   const setUserName = useGameStore(state => state.setUserName)
   const addPartner = useGameStore(state => state.addPartner)
 
@@ -93,9 +93,8 @@ const Congratulations = () => {
         </div>
         <img src="/images/rocket.gif" alt="rocket" className="absolute z-50 w-full 2xl:max-w-[200px]  max-w-[150px] -translate-x-1/3  top-full lg:top-2/3 -translate-y-1/2 lg:-translate-y-1/3 left-1/4 md:left-1/2" />
       </div>
-      <h2 className="text-4xl font-bold lg:text-5xl text-c-yellow">¡FELICITACIONES!</h2>
+      <h2 className="mt-20 text-4xl font-bold lg:text-5xl text-c-yellow">¡FELICITACIONES!</h2>
       <p className="max-w-xs text-xl font-bold text-center text-white lg:text-2xl">¡Las tres campañas fueron un súper mega archi éxito en el mundo entero!</p>
-      <p>Numero de intentos {attemps}</p>
       <div className="flex flex-col w-full max-w-xs gap-2">
         <label className="text-xs text-white lg:text-sm" htmlFor="nombre" >Completá tu nombre</label>
         <input type="text" onChange={handleData} name="nombre" className="px-4 py-2 border rounded-md border-c-yellow" placeholder="Nombre" id="nombre" />
