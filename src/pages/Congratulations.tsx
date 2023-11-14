@@ -23,10 +23,10 @@ const Congratulations = () => {
 
   const handleData = (evt: ChangeEvent<HTMLInputElement>) => {
     evt.preventDefault()
-    if (evt.target.name === 'nombre') {
+    if (evt.target.name === 'team') {
       setTeamName(evt.target.value)
     }
-    if (evt.target.name === 'team') {
+    if (evt.target.name === 'nombre') {
       setUserName(evt.target.value)
     }
   }
