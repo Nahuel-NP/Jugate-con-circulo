@@ -1,4 +1,5 @@
 
+import html2canvas from "html2canvas";
 import StarsContainer from "../components/StarsContainer";
 import { useGameStore } from "../store/gameStore";
 
@@ -19,6 +20,25 @@ const Team = () => {
   const attemps = useGameStore(state => state.attemps)
 
 
+    const exportAsImage = async () => {
+    const element =document.querySelector<HTMLElement>('#capture')
+    const canvas = await html2canvas(element!,{logging:true});
+    const image = canvas.toDataURL("image/png", 1.0);
+    downloadImage(image, 'EquipoEstrella');
+    }
+    
+    const downloadImage = (blob: string, fileName:string) => {
+    const fakeLink = window.document.createElement("a");
+    fakeLink.style.display = "none";
+    fakeLink.download = fileName;
+    fakeLink.href = blob;
+    document.body.appendChild(fakeLink);
+    fakeLink.click();
+    document.body.removeChild(fakeLink);
+    fakeLink.remove();
+    };
+
+
   return (
     <div className="relative bg-[url('/images/backgrounds/montana/front.webp')] px-4 bg-fixed bg-bottom bg-contain bg-no-repeat z-10   " style={{ viewTransitionName: 'view' }}>
       <div className="container grid w-full gap-6 py-5 mx-auto xl:max-w-7xl 2xl:max-w-[1366px] place-items-center md:grid-cols-2 lg:grid-cols-4 secure-min-h">
@@ -29,7 +49,7 @@ const Team = () => {
           <p className="text-3xl font-bold text-center text-c-yellow">{teamName}</p>
         </div>
 
-        <div className="lg:col-span-3 md:col-span-1">
+        <div className="lg:col-span-3 md:col-span-1 2xl:self-end 2xl:pb-6">
 
           <div className="relative flex-col hidden gap-2 p-6 lg:items-start lg:flex md:col-span-6 lg:col-span-5 lg:before:absolute lg:before:right-0 lg:before:border-r 2xl:before:border-r-2 lg:before:bottom-0 lg:after:absolute lg:after:bottom-1/2 lg:after:w-16 lg:after:border-b 2xl:after:border-b-2 lg:after:border-c-yellow lg:after:right-0 lg:before:h-1/2 lg:before:border-c-yellow">
             <p className="text-3xl 2xl:text-[32px] font-bold text-center text-c-yellow">{userName} creaste este <span className="italic">#EquipoEstrella</span> </p>
@@ -52,12 +72,13 @@ const Team = () => {
             }
           </div>
         </div>
-        <div className="2xl:justify-self-start">
+        <div className=" 2xl:justify-self-start 2xl:self-end">
 
           <img src="/images/telefono.webp" alt="telefono" style={{backgroundImage:`url(/images/cocacola/coca-cola_${randomImage}.webp)`}} className="max-w-[250px]  bg-[length:80%] bg-[center_top_40%] bg-no-repeat " />
           <p className="font-medium text-center text-white">Resuelto en {attemps} {attemps > 1 ? 'intentos' : 'intento'}</p>
         </div>
 
+      <button onClick={exportAsImage} className="self-start px-5 py-2 font-bold rounded-full md:col-span-2 bg-c-yellow lg:col-span-4">Compartir</button>
       </div>
     </div>
   );
