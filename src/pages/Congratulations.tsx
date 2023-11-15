@@ -16,7 +16,7 @@ const Congratulations = () => {
   const teamName = useGameStore(state => state.teamName)
   const userName = useGameStore(state => state.userName)
   const setTeamName = useGameStore(state => state.setTeamName)
-  // const attemps = useGameStore(state => state.attemps)
+  const team = useGameStore(state => state.team)
   const setUserName = useGameStore(state => state.setUserName)
   const addPartner = useGameStore(state => state.addPartner)
 
@@ -35,8 +35,12 @@ const Congratulations = () => {
 
 
   useEffect(() => {
-    const admins = circuleros!.filter(circulero => circulero.roles.includes('Administrativo/a'))
-    addPartner(admins[1], 'Admin')
+    //posicion de admin en el array
+    if (!team[10]) { 
+      const admins = circuleros!.filter(circulero => circulero.roles.includes('Administrativo/a'))
+      addPartner(admins[1], 'Admin')
+    }
+
     
     const duration = 15 * 1000;
     const animationEnd = Date.now() + duration;
