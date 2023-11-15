@@ -1,5 +1,15 @@
+
 import StarsContainer from "../components/StarsContainer";
 import { useGameStore } from "../store/gameStore";
+
+
+const AFTER_CLASSES = 'after:border lg:after:h-[70px] lg:after:bottom-0 lg:after:border-r md:after:border-0 after:border-c-yellow after:absolute  after:border-t-0 after:-bottom-4 after:left-0 after:w-full after:h-[140px]'
+const NTH_CLASSES = '[&:nth-child(10)]:col-span-3 [&:nth-child(11)]:col-span-3 lg:[&:nth-child(11)]:absolute lg:[&:nth-child(11)]:w-auto  lg:[&:nth-child(11)]:right-0 lg:[&:nth-child(11)]:top-1/2 lg:[&:nth-child(11)]:translate-x-1/2 lg:[&:nth-child(11)]:-translate-y-1/2 lg:[&:nth-child(10)]:col-span-1'
+
+const getRandomInt = (max: number): number => {
+  return Math.floor(Math.random() * max);
+}
+const randomImage = getRandomInt(42)+1
 
 const Team = () => {
 
@@ -7,7 +17,8 @@ const Team = () => {
   const teamName = useGameStore(state => state.teamName)
   const team = useGameStore(state => state.team)
   const attemps = useGameStore(state => state.attemps)
-  console.log(team);
+
+
   return (
     <div className="relative bg-[url('/images/backgrounds/montana/front.webp')] px-4 bg-fixed bg-bottom bg-contain bg-no-repeat z-10   " style={{ viewTransitionName: 'view' }}>
       <div className="container grid w-full gap-6 py-5 mx-auto place-items-center md:grid-cols-2 lg:grid-cols-4 secure-min-h">
@@ -28,12 +39,12 @@ const Team = () => {
               <p className="text-3xl font-bold text-center text-c-yellow">{teamName}</p>
             </div>
           </div>
-          <div className="relative lg:col-span-3 grid md:border lg:pr-16 lg:border-r-0 md:border-t-0 md:p-4 md:border-c-yellow  grid-cols-6 lg:grid-cols-5 gap-4 after:border md:max-w-xs lg:max-w-none md:gap-2 md:after:border-0 after:border-c-yellow after:absolute  after:border-t-0 after:-bottom-4 after:left-0 after:w-full after:h-[140px]">
+          <div className={`relative grid grid-cols-6 gap-4 lg:col-span-3 md:border lg:pr-16 lg:border-r-0 md:border-t-0 md:p-4 md:border-c-yellow lg:grid-cols-5 md:max-w-xs lg:max-w-none md:gap-2 ${AFTER_CLASSES}`}>
             {
               team.map(partner => (
 
                 <div key={partner.rol}
-                  className='[&:nth-child(10)]:col-span-3 [&:nth-child(11)]:col-span-3 lg:col-span-1 lg:[&:nth-child(11)]:absolute lg:[&:nth-child(11)]:w-auto  lg:[&:nth-child(11)]:right-0 lg:[&:nth-child(11)]:top-1/2 lg:[&:nth-child(11)]:translate-x-1/2 lg:[&:nth-child(11)]:-translate-y-1/2 lg:[&:nth-child(10)]:col-span-1  w-full col-span-2 gap-2  p-1 md:p-[6px] flex flex-col justify-center items-center'>
+                  className={` lg:col-span-1   w-full col-span-2 gap-2  p-1 md:p-[6px] flex flex-col justify-center items-center ${NTH_CLASSES}`}>
                   <img className='p-2 rounded-full bg-gradient-to-r from-[#1DB7B3] to-[#9153C5] max-w-[100px] md:max-w-[80px]  ' src={`/images/circuleros/${partner.circulero.image ? partner.circulero.image : 'no-profile'}.jpg`} alt={partner.circulero.name} />
                   <p className="text-xs text-center text-white uppercase">{partner.rol}</p>
                 </div>
@@ -43,7 +54,7 @@ const Team = () => {
         </div>
         <div className="2xl:justify-self-start">
 
-          <img src="/images/telefono.webp" alt="telefono" className="max-w-[250px] " />
+          <img src="/images/telefono.webp" alt="telefono" style={{backgroundImage:`url(/images/cocacola/coca-cola_${randomImage}.webp)`}} className="max-w-[250px]  bg-[length:80%] bg-[center_top_40%] bg-no-repeat " />
           <p className="font-medium text-center text-white">Resuelto en {attemps} {attemps > 1 ? 'intentos' : 'intento'}</p>
         </div>
 
