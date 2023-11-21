@@ -2,6 +2,8 @@
 import html2canvas from "html2canvas";
 import StarsContainer from "../components/StarsContainer";
 import { useGameStore } from "../store/gameStore";
+import { useEffect } from 'react';
+import useLocalStorage from "../hooks/useLocalStorage";
 
 
 const AFTER_CLASSES = 'after:border lg:after:h-[70px] lg:after:bottom-0 lg:after:border-r 2xl:after:border-r-2 md:after:border-0 after:border-c-yellow after:absolute  after:border-t-0 after:-bottom-4 after:left-0 after:w-full after:h-[140px]'
@@ -10,24 +12,44 @@ const NTH_CLASSES = '[&:nth-child(10)]:col-span-3 [&:nth-child(11)]:col-span-3 l
 const getRandomInt = (max: number): number => {
   return Math.floor(Math.random() * max);
 }
-const randomImage = getRandomInt(42)+1
+const randomImage = getRandomInt(42) + 1
 
 const Team = () => {
 
   const userName = useGameStore(state => state.userName)
+  const setUserName = useGameStore(state => state.setUserName)
   const teamName = useGameStore(state => state.teamName)
+  const setTeamName = useGameStore(state => state.setTeamName)
   const team = useGameStore(state => state.team)
+  const setTeam = useGameStore(state => state.setTeam)
   const attemps = useGameStore(state => state.attemps)
-
-
-    const exportAsImage = async () => {
-    const element =document.querySelector<HTMLElement>('#capture')
-    const canvas = await html2canvas(element!,{logging:true});
-    const image = canvas.toDataURL("image/png", 1.0);
-    downloadImage(image, 'EquipoEstrella');
+  const setAttemps = useGameStore(state => state.setAttemps)
+  
+  const [storedValue]  = useLocalStorage('gameResults',{
+    userName,
+    teamName,
+    team,
+    attemps
+  })
+  
+  useEffect(() => {
+    if (storedValue) {
+      setTeam(storedValue.team)
+      setTeamName(storedValue.teamName)
+      setUserName(storedValue.userName)
+      setAttemps(storedValue.attemps)
     }
-    
-    const downloadImage = (blob: string, fileName:string) => {
+  }, []);
+
+  const exportAsImage = () => {
+    const element = document.querySelector<HTMLElement>('#capture')
+    html2canvas(element!).then(function (canvas) {
+      const image = canvas.toDataURL("image/png", 1.0);
+      downloadImage(image, 'EquipoEstrella');
+    })
+  }
+
+  const downloadImage = (blob: string, fileName: string) => {
     const fakeLink = window.document.createElement("a");
     fakeLink.style.display = "none";
     fakeLink.download = fileName;
@@ -36,7 +58,8 @@ const Team = () => {
     fakeLink.click();
     document.body.removeChild(fakeLink);
     fakeLink.remove();
-    };
+  };
+
 
 
   return (
@@ -74,11 +97,11 @@ const Team = () => {
         </div>
         <div className=" 2xl:justify-self-start 2xl:self-end">
 
-          <img src="/images/telefono.webp" alt="telefono" style={{backgroundImage:`url(/images/cocacola/coca-cola_${randomImage}.webp)`}} className="max-w-[250px]  bg-[length:80%] bg-[center_top_40%] bg-no-repeat " />
+          <img src="/images/telefono.webp" alt="telefono" style={{ backgroundImage: `url(/images/cocacola/coca-cola_${randomImage}.webp)` }} className="max-w-[250px]  bg-[length:80%] bg-[center_top_40%] bg-no-repeat " />
           <p className="font-medium text-center text-white">Resuelto en {attemps} {attemps > 1 ? 'intentos' : 'intento'}</p>
         </div>
 
-      <button onClick={exportAsImage} className="self-start px-5 py-2 font-bold rounded-full md:col-span-2 bg-c-yellow lg:col-span-4">Compartir</button>
+        <button onClick={exportAsImage} className="self-start px-5 py-2 font-bold rounded-full md:col-span-2 bg-c-yellow lg:col-span-4">Compartir</button>
       </div>
     </div>
   );
