@@ -4,6 +4,7 @@ import StarsContainer from "../components/StarsContainer";
 import { useGameStore } from "../store/gameStore";
 import { useEffect } from 'react';
 import useLocalStorage from "../hooks/useLocalStorage";
+import { useNavigate } from "react-router-dom";
 
 
 const AFTER_CLASSES = 'after:border lg:after:h-[70px] lg:after:bottom-0 lg:after:border-r 2xl:after:border-r-2 md:after:border-0 after:border-c-yellow after:absolute  after:border-t-0 after:-bottom-4 after:left-0 after:w-full after:h-[140px]'
@@ -24,7 +25,7 @@ const Team = () => {
   const setTeam = useGameStore(state => state.setTeam)
   const attemps = useGameStore(state => state.attemps)
   const setAttemps = useGameStore(state => state.setAttemps)
-  
+  const navigate = useNavigate()
   const [storedValue]  = useLocalStorage('gameResults',{
     userName,
     teamName,
@@ -33,12 +34,17 @@ const Team = () => {
   })
   
   useEffect(() => {
-    if (storedValue) {
+    if (storedValue.userName && storedValue.teamName ) {
       setTeam(storedValue.team)
       setTeamName(storedValue.teamName)
       setUserName(storedValue.userName)
       setAttemps(storedValue.attemps)
     }
+
+    if (!team.length && !storedValue.teamName.length) {
+      navigate('/tramposo')
+    }
+    
   }, []);
 
   const exportAsImage = () => {
