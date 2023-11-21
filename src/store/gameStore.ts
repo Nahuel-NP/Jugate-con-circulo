@@ -5,6 +5,7 @@ import { Circulero, Question, preguntas } from '../data/circuleros';
 interface GameStore {
   stage: number;
   team: Array<Partner>;
+  setTeam: (team: Array<Partner>) => void;
   resetTeam: () => void;
   incrementLevel: () => void;
   restoreStage: () => void;
@@ -29,6 +30,7 @@ interface GameStore {
   canPass: boolean;
   setCanPass: (stage: boolean) => void;
   attemps:number;
+  setAttemps:(attemps:number) => void;
   increaseAttemps:() => void;
   resetAttemps:() => void;
 }
@@ -54,6 +56,7 @@ export const useGameStore = create<GameStore>((set) => ({
   attemps:1,
   increaseAttemps:() => set((state)=>({attemps: ++state.attemps} )),
   resetAttemps:() => set({attemps:1}),
+  setAttemps:(attemps) => set({attemps}),
   incrementLevel: () => set((state) => {
     if (state.stage < 5) {
       return { stage: ++state.stage, currentQuestion: preguntas[state.stage] }
@@ -62,6 +65,7 @@ export const useGameStore = create<GameStore>((set) => ({
   }),
   restoreStage: () => set({ stage: 0, currentQuestion: preguntas[0],attemps:1}),
   team: [],
+  setTeam: (team) => set({ team }),
   resetTeam: () => set({ team: [] }),
   addPartner: (partner: Circulero, rol: string) => set((state) => ({ team: [...state.team, { circulero: partner, rol }] })),
   hasError: false,
