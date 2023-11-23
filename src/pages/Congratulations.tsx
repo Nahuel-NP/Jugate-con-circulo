@@ -38,7 +38,7 @@ const Congratulations = () => {
     //posicion de admin en el array
     if (!team[10]) { 
       const admins = circuleros!.filter(circulero => circulero.roles.includes('Administrativo/a'))
-      addPartner(admins[1], 'Admin')
+      addPartner(admins[0], 'Admin')
     }
 
     

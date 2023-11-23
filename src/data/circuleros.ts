@@ -257,7 +257,7 @@ export const circuleros: Circulero[] = [
       "Diseñador/a"
     ]
   },
-  {
+/*   {
     id: 26,
     name: "Vivoli Lucia",
     apodo: "Luli",
@@ -265,7 +265,7 @@ export const circuleros: Circulero[] = [
     roles: [
       "Administrativo/a"
     ]
-  },
+  }, */
   {
     id: 27,
     name: "Sarrua Gastón",

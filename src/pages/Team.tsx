@@ -94,7 +94,7 @@ const Team = () => {
 
                 <div key={partner.rol}
                   className={` lg:col-span-1   w-full col-span-2 gap-2  p-1 md:p-[6px] flex flex-col justify-center items-center ${NTH_CLASSES}`}>
-                  <img className='p-2 rounded-full bg-gradient-to-r from-[#1DB7B3] to-[#9153C5] max-w-[100px] md:max-w-[80px] 2xl:max-w-[100px] ' src={`/images/circuleros/${partner.circulero.image ? partner.circulero.image : 'no-profile'}.jpg`} alt={partner.circulero.name} />
+                  <img className='p-2 rounded-full bg-gradient-to-r from-[#1DB7B3] to-[#9153C5] max-w-[100px] md:max-w-[80px] 2xl:max-w-[100px] ' src={`/images/circuleros/${partner.circulero.image ? partner.circulero.image : 'no-profile'}.webp`} alt={partner.circulero.name} />
                   <p className="text-xs text-center text-white uppercase">{partner.rol}</p>
                 </div>
               ))

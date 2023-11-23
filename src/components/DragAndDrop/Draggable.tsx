@@ -37,7 +37,7 @@ export const Draggable = ({ id, circulero, disabled = false }: Props) => {
         </div>
         :
         <div className='w-full p-1 md:p-[6px] bg-white'>
-          <img className='rounded-full' src={`/images/circuleros/${circulero?.image ? circulero.image : 'no-profile'}.jpg`} alt={circulero?.name} />
+          <img className='rounded-full' src={`/images/circuleros/${circulero?.image ? circulero.image : 'no-profile'}.webp`} alt={circulero?.name} />
         </div>}
     </div>
   );
