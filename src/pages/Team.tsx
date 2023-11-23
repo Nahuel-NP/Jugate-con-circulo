@@ -80,7 +80,7 @@ const Team = () => {
         </div>
 
         <div className="lg:col-span-3 md:col-span-1 2xl:pb-6 2xl:self-center">
-          <div className={`relative  grid grid-cols-6 gap-4  lg:col-span-3 md:border-4   border-c-yellow border-b-4 pb-4 max-w-sm mx-auto  md:border-t-0 2xl:border-b-4 2xl:border-x-0 md:p-4 md:border-c-yellow lg:grid-cols-4 xl:grid-cols-6  lg:max-w-none md:gap-2 }`}>
+          <div className={`relative  grid grid-cols-6 gap-4  lg:col-span-3 md:border-4   border-c-yellow border-b-4 pb-4 max-w-sm mx-auto  md:border-t-0 xl:border-b-4 xl:border-x-0 md:p-4 md:border-c-yellow lg:grid-cols-4 xl:grid-cols-6  lg:max-w-none md:gap-2 }`}>
             {
               team.map(partner => (
 
