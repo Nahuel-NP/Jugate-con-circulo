@@ -40,6 +40,11 @@ const Congratulations = () => {
       const admins = circuleros!.filter(circulero => circulero.roles.includes('Administrativo/a'))
       addPartner(admins[0], 'Admin')
     }
+    if (!team[11]) { 
+      const rhh = circuleros!.filter(circulero => circulero.roles.includes('de Recursos Humanos'))
+      console.log(rhh);
+      addPartner(rhh[0], 'RRHH')
+    }
 
     
     const duration = 15 * 1000;
