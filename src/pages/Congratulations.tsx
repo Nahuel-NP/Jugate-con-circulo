@@ -42,7 +42,6 @@ const Congratulations = () => {
     }
     if (!team[11]) { 
       const rhh = circuleros!.filter(circulero => circulero.roles.includes('de Recursos Humanos'))
-      console.log(rhh);
       addPartner(rhh[0], 'RRHH')
     }
 

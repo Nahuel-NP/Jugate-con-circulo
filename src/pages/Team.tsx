@@ -33,7 +33,7 @@ const Team = () => {
 
   useEffect(() => {
     if (team.length && teamName!= '' && userName !='') {
-      console.log('ingresa?');
+ 
       setValue({
         userName,
         teamName,
@@ -42,7 +42,7 @@ const Team = () => {
       })
     }else{
       if (storedValue.userName && storedValue.teamName ) {
-        console.log('ingresa aca');
+
         setTeam(storedValue.team)
         setTeamName(storedValue.teamName)
         setUserName(storedValue.userName)
