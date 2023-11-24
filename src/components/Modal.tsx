@@ -6,7 +6,7 @@ interface ModalProps {
 
 const Modal = ({children,bgClass = 'bg-c-purple'}:ModalProps) => {
   return (
-    <div className={`absolute animate-fade-down animate-once animate-ease-in-out top-0 left-0 backdrop-blur-sm !z-[200] w-full h-full bg-opacity-70  flex flex-col justify-center items-center gap-10 ${bgClass}`}>
+    <div className={`absolute animate-fade-down animate-once animate-ease-in-out top-0 left-0 backdrop-blur-sm !z-[200] w-full h-full bg-opacity-70  flex flex-col justify-start pt-36 lg:pt-0 lg:justify-center items-center gap-10 ${bgClass}`}>
       {children}
     </div>
   );

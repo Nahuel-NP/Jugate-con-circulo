@@ -30,7 +30,7 @@ const CorrectModal = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-6">
+    <div className="flex flex-col items-center justify-start gap-6 md:justify-center">
 
       <StarsContainer quantity={level + 1} />
       <img src={`/images/levels/level-${level + 1}.svg`} className="my-4" alt="congratulations" />

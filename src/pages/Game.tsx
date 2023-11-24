@@ -85,7 +85,6 @@ const Game = () => {
   }
 
   const comprobar = () => {
-
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
     if (hasError) {
