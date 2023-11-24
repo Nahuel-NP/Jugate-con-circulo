@@ -24,7 +24,7 @@ const Team = () => {
   const attemps = useGameStore(state => state.attemps)
   const setAttemps = useGameStore(state => state.setAttemps)
   const navigate = useNavigate()
-  const [storedValue] = useLocalStorage('gameResults', {
+  const [storedValue,setValue] = useLocalStorage('gameResults', {
     userName,
     teamName,
     team,
@@ -32,12 +32,24 @@ const Team = () => {
   })
 
   useEffect(() => {
-    if (storedValue.userName && storedValue.teamName) {
-      setTeam(storedValue.team)
-      setTeamName(storedValue.teamName)
-      setUserName(storedValue.userName)
-      setAttemps(storedValue.attemps)
+    if (team.length && teamName!= '' && userName !='') {
+      console.log('ingresa?');
+      setValue({
+        userName,
+        teamName,
+        team,
+        attemps
+      })
+    }else{
+      if (storedValue.userName && storedValue.teamName ) {
+        console.log('ingresa aca');
+        setTeam(storedValue.team)
+        setTeamName(storedValue.teamName)
+        setUserName(storedValue.userName)
+        setAttemps(storedValue.attemps)
+      }
     }
+    
 
     if (!team.length && !storedValue.teamName.length) {
       navigate('/tramposo')
