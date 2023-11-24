@@ -21,15 +21,15 @@ export interface CirculerosState {
 const Game = () => {
 
   useTutorialModal()
-  
+
   const { handletransition } = useTransition()
-  
+
   const setErrorModal = useModalStore((state) => (state.setErrorModal))
 
-  const setCorrectModal = useModalStore((state)=> state.setCorrectModal)
-  
+  const setCorrectModal = useModalStore((state) => state.setCorrectModal)
+
   const stage = useGameStore((state) => (state.stage))
-  
+
   const addPartner = useGameStore((state) => (state.addPartner))
 
   const question = useGameStore((state) => (state.currentQuestion))
@@ -38,9 +38,9 @@ const Game = () => {
 
   const { hasError, resetErrors } = useVerifyAnswer(question)
 
-  
+
   useEffect(() => {
-    const { circuleros: circuleros20} = useRandomCirculeros(stage)
+    const { circuleros: circuleros20 } = useRandomCirculeros(stage)
 
     setCirculeros(circuleros20)
   }, [stage])
@@ -98,16 +98,16 @@ const Game = () => {
       resetErrors()
       if (stage !== 4) {
         setCorrectModal(true)
-      }else{
+      } else {
         setCanPass(true)
         handletransition('/congratulations')
       }
     }
-    
+
   }
 
   return (
-    <section className="relative z-10 flex flex-col bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat  items-center w-full secure-min-h py-10 lg:pt-24 md:pt-0 " style={{ viewTransitionName: 'view'}}>
+    <section className="relative z-10 flex flex-col bg-[url('/images/backgrounds/montana/front.webp')] bg-fixed bg-bottom bg-contain bg-no-repeat  items-center w-full secure-min-h py-10 lg:pt-24 md:pt-0 " style={{ viewTransitionName: 'view' }}>
       <div className="container px-8 py-4 md:mt-10 lg:mt-4 xl:mt-6 2xl:mt-16">
         <DndContext sensors={sensors} autoScroll={false} collisionDetection={closestCenter} onDragEnd={drawEnd}>
 
@@ -119,6 +119,11 @@ const Game = () => {
                   firstSelectedCirculero ?
                     <div className="relative flex items-center justify-center w-full p-4 bg-white h-36 before:w-full before:h-full before:absolute before:bg-c-magenta before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
                       <CirculeroCard circulero={firstSelectedCirculero} rol={question.roles[0].buscado} />
+                      <button onClick={()=>setFirstSelectedCirculero(null)} className="absolute top-4 right-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" >
+                          <path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path>
+                        </svg>
+                      </button>
                     </div>
                     :
                     <div className="relative flex items-center justify-center w-full p-4 h-36 bg-c-magenta before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
@@ -133,7 +138,7 @@ const Game = () => {
                   {circuleros && circuleros.map(item => (
                     <Draggable disabled={item == firstSelectedCirculero || secondSelectedCirculero == item} id={item.id.toString()} key={item.id} circulero={item} />))
                   }
-                <p className="col-span-5 text-center text-c-yellow">Arrastrá un circulover hacia la tarjeta del rol</p>
+                  <p className="col-span-5 text-center text-c-yellow">Arrastrá un circulover hacia la tarjeta del rol</p>
                 </div>
               </Droppable>
             </div>
@@ -143,6 +148,11 @@ const Game = () => {
                   secondSelectedCirculero ?
                     <div className="relative flex items-center justify-center w-full p-4 bg-white h-36 before:w-full before:h-full before:absolute before:bg-c-cyan before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
                       <CirculeroCard circulero={secondSelectedCirculero} rol={question.roles[1].buscado} />
+                      <button onClick={()=>setSecondSelectedCirculero(null)} className="absolute top-4 right-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" >
+                          <path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path>
+                        </svg>
+                      </button>
                     </div>
                     :
                     <div className="relative flex items-center justify-center w-full p-4 text-black h-36 bg-c-cyan before:w-full before:h-full before:absolute before:bg-white before:-z-10 before:-left-2 before:top-2 before:shadow-md before:shadow-black">
