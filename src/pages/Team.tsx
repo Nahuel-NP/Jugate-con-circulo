@@ -2,16 +2,18 @@
 import html2canvas from "html2canvas";
 import StarsContainer from "../components/StarsContainer";
 import { useGameStore } from "../store/gameStore";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useNavigate } from "react-router-dom";
+import { frases } from "../data/circuleros";
 
 
 
 const getRandomInt = (max: number): number => {
   return Math.floor(Math.random() * max);
 }
-const randomImage = getRandomInt(42) + 1
+const randomImage = getRandomInt(42) 
+const randomFrase = getRandomInt(6) 
 
 const Team = () => {
 
@@ -24,11 +26,17 @@ const Team = () => {
   const attemps = useGameStore(state => state.attemps)
   const setAttemps = useGameStore(state => state.setAttemps)
   const navigate = useNavigate()
+
+  const [imageIndex,setImageIndex] = useState(randomImage)
+  const [fraseIndex,setFraseIndex] = useState(randomFrase)
+
   const [storedValue,setValue] = useLocalStorage('gameResults', {
     userName,
     teamName,
     team,
-    attemps
+    attemps,
+    randomFrase,
+    randomImage
   })
 
   useEffect(() => {
@@ -38,7 +46,9 @@ const Team = () => {
         userName,
         teamName,
         team,
-        attemps
+        attemps,
+        randomFrase,
+        randomImage
       })
     }else{
       if (storedValue.userName && storedValue.teamName ) {
@@ -47,6 +57,8 @@ const Team = () => {
         setTeamName(storedValue.teamName)
         setUserName(storedValue.userName)
         setAttemps(storedValue.attemps)
+        setFraseIndex(storedValue.randomFrase)
+        setImageIndex(storedValue.randomImage)
       }
     }
     
@@ -104,10 +116,10 @@ const Team = () => {
               ))
             }
           </div>
-          <p className="max-w-sm py-4 text-lg font-medium text-white lg:max-w-none">¡Las tres campañas fueron un súper mega archi éxito en el mundo entero!</p>
+          <p className="max-w-sm py-4 text-lg font-medium text-white lg:max-w-none">{frases[fraseIndex]}</p>
         </div>
         <div className=" 2xl:justify-self-start 2xl:self-center">
-          <img src="/images/telefono.webp" alt="telefono" style={{ backgroundImage: `url(/images/cocacola/coca-cola_${randomImage}.webp)` }} className="max-w-[220px] md:max-w-[300px] lg:max-w-[230px] 2xl:max-w-[270px]  bg-[length:80%] bg-[center_top_40%] bg-no-repeat " />
+          <img src="/images/telefono.webp" alt="telefono" style={{ backgroundImage: `url(/images/cocacola/coca-cola_${imageIndex}.webp)` }} className="max-w-[220px] md:max-w-[300px] lg:max-w-[230px] 2xl:max-w-[270px]  bg-[length:80%] bg-[center_top_40%] bg-no-repeat " />
           <p className="font-medium text-center text-white">Resuelto en {attemps} {attemps > 1 ? 'intentos' : 'intento'}</p>
         </div>
 
