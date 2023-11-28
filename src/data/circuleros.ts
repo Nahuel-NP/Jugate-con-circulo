@@ -528,3 +528,12 @@ export const preguntas: Array<Question> = [
     ]
   }
 ]
+
+export const frases = [
+  "Creíamos que iba a ser difícil, pero con este equipazo se volvió todo muy fácil",
+  "El único verdadero conflicto fue cuando nos quedamos sin yerba",
+  "Izi pizi, facilito el trabajo",
+  "Salió tan lindo todo que queremos armar un caso sobre este trabajo",
+  "Empezamos, activamos, le metimos, pusimos en común y cerramos. Un éxito",
+  "Nos dijeron que esto iba a ser un desafío, al final fue un lujo",
+]
