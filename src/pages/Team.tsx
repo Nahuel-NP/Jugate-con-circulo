@@ -13,7 +13,7 @@ const getRandomInt = (max: number): number => {
   return Math.floor(Math.random() * max);
 }
 const randomImage = getRandomInt(42) 
-const randomFrase = getRandomInt(6) 
+const randomFrase = getRandomInt(25) 
 
 const Team = () => {
 
@@ -116,7 +116,7 @@ const Team = () => {
               ))
             }
           </div>
-          <p className="max-w-sm py-4 text-lg font-medium text-white lg:max-w-none">{frases[fraseIndex]}</p>
+          <p className="max-w-sm py-4 text-lg italic font-medium text-white lg:max-w-none">{frases[fraseIndex]}</p>
         </div>
         <div className=" 2xl:justify-self-start 2xl:self-center">
           <img src="/images/telefono.webp" alt="telefono" style={{ backgroundImage: `url(/images/cocacola/coca-cola_${imageIndex}.webp)` }} className="max-w-[220px] md:max-w-[300px] lg:max-w-[230px] 2xl:max-w-[270px]  bg-[length:80%] bg-[center_top_40%] bg-no-repeat " />
