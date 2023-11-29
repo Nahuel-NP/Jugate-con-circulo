@@ -325,7 +325,7 @@ export const circuleros: Circulero[] = [
     id: 33,
     name: "Alunni Juan Ignacio",
     apodo: "Alunni",
-    image: "",
+    image: "img-alunni",
     roles: [
       "Audiovisualista"
     ]
