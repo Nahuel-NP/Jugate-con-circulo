@@ -26,7 +26,7 @@ export type Rol = "Audiovisualista"
   | "Diseñador/a"
   | "Director/a de Creatividad"
   | "Director general Creativo"
-  |"Ejecutivo Comercial"
+  | "Ejecutivo Comercial"
 
 
 
@@ -64,7 +64,7 @@ export const circuleros: Circulero[] = [
     apodo: "Juanpa",
     image: "img-juanpa",
     roles: [
-      "Redactor","Contenidista"
+      "Redactor", "Contenidista"
     ]
   },
   {
@@ -200,7 +200,7 @@ export const circuleros: Circulero[] = [
     apodo: "Roy",
     image: "img-roy",
     roles: [
-       "Diseñador/a","Director/a de Arte"
+      "Diseñador/a", "Director/a de Arte"
     ]
   },
   {
@@ -245,7 +245,7 @@ export const circuleros: Circulero[] = [
     apodo: "Tala",
     image: "img-tala",
     roles: [
-      "Director general Creativo","Redactor"
+      "Director general Creativo", "Redactor"
     ]
   },
   {
@@ -257,15 +257,15 @@ export const circuleros: Circulero[] = [
       "Diseñador/a"
     ]
   },
-/*   {
-    id: 26,
-    name: "Vivoli Lucia",
-    apodo: "Luli",
-    image: "img-luli",
-    roles: [
-      "Administrativo/a"
-    ]
-  }, */
+  /*   {
+      id: 26,
+      name: "Vivoli Lucia",
+      apodo: "Luli",
+      image: "img-luli",
+      roles: [
+        "Administrativo/a"
+      ]
+    }, */
   {
     id: 27,
     name: "Sarrua Gastón",
@@ -373,7 +373,7 @@ export const circuleros: Circulero[] = [
     apodo: "Mica",
     image: "img-mica-robledo",
     roles: [
-      "Diseñador/a","Contenidista"
+      "Diseñador/a", "Contenidista"
     ]
   },
   {
@@ -391,7 +391,7 @@ export const circuleros: Circulero[] = [
     apodo: "Andrés",
     image: "img-andres",
     roles: [
-      "Redactor", "Director/a de Arte","Contenidista"
+      "Redactor", "Director/a de Arte", "Contenidista"
     ]
   },
   {
@@ -440,7 +440,7 @@ export interface Question {
 export interface RolPregunta {
   buscado: string;
   correcto: Array<Rol>;
-  descripcion:string
+  descripcion: string
 }
 
 export const preguntas: Array<Question> = [
@@ -452,12 +452,12 @@ export const preguntas: Array<Question> = [
         {
           buscado: "DP",
           correcto: ["DP"],
-          descripcion:"Un/a <span class='font-bold'>DP</span> se encarga de dirigir la estrategia general del proyecto. Es responsable de armar el equipo, crear la propuesta y darle seguimiento a los avances."
+          descripcion: "Un/a <span class='font-bold'>DP</span> se encarga de dirigir la estrategia general del proyecto. Es responsable de armar el equipo, crear la propuesta y darle seguimiento a los avances."
         },
         {
           buscado: "Cuentas",
           correcto: ["Cuentas"],
-          descripcion:"Un/a <span class='font-bold'>CUENTAS</span> es su mano derecha. Acompaña en la organización interna y en la comunicación con el cliente para solicitar información."
+          descripcion: "Un/a <span class='font-bold'>CUENTAS</span> es su mano derecha. Acompaña en la organización interna y en la comunicación con el cliente para solicitar información."
         },
       ]
 
@@ -465,75 +465,95 @@ export const preguntas: Array<Question> = [
   {
     id: 1,
     pregunta: "Sumemos a Creatividad",
-    roles:[
+    roles: [
       {
-        buscado:"Dir. de Arte",
-        correcto:["Director/a de Arte","Director/a de Creatividad"],
-        descripcion:"Necesitamos un <span class='font-bold'>DIR. DE ARTE</span> que se encargará de la estrategia visual."
+        buscado: "Dir. de Arte",
+        correcto: ["Director/a de Arte", "Director/a de Creatividad"],
+        descripcion: "Necesitamos un <span class='font-bold'>DIR. DE ARTE</span> que se encargará de la estrategia visual."
       },
       {
-        buscado:"Redactor",
-        correcto:["Redactor","Director general Creativo"],
-        descripcion:"Y necesitaremos un <span class='font-bold'>REDACTOR</span> que se encargará de desarrollar la estrategia discursiva de las campañas."
+        buscado: "Redactor",
+        correcto: ["Redactor", "Director general Creativo"],
+        descripcion: "Y necesitaremos un <span class='font-bold'>REDACTOR</span> que se encargará de desarrollar la estrategia discursiva de las campañas."
       }
     ]
   },
   {
     /* preguntar por gonza */
-    id:2,
-    pregunta:"Sigamos armando el equipo de Branding",
-    roles:[
+    id: 2,
+    pregunta: "Sigamos armando el equipo de Branding",
+    roles: [
       {
-        buscado:"Diseñador",
-        correcto:["Diseñador/a"],
-        descripcion:"Necesitamos un/a <span class='font-bold'>DISEÑADOR/A</span> que se encargará de plasmar visualemente todas las estrategias, discurso y objetivos planteados."
+        buscado: "Diseñador",
+        correcto: ["Diseñador/a"],
+        descripcion: "Necesitamos un/a <span class='font-bold'>DISEÑADOR/A</span> que se encargará de plasmar visualemente todas las estrategias, discurso y objetivos planteados."
       },
       {
-        buscado:"Audiovisualista",
-        correcto:["Audiovisualista"],
-        descripcion:"Y nuestro/a <span class='font-bold'>AUDIOVISUALISTA</span> se encargará de dirigir el proyecto desde el enfoque audiovisual. Esta persona puede ser animadora, editora o productora."
+        buscado: "Audiovisualista",
+        correcto: ["Audiovisualista"],
+        descripcion: "Y nuestro/a <span class='font-bold'>AUDIOVISUALISTA</span> se encargará de dirigir el proyecto desde el enfoque audiovisual. Esta persona puede ser animadora, editora o productora."
       }
     ]
   },
   {
-    id:3,
-    pregunta:"Armemos el equipo de Marketing",
-    roles:[
+    id: 3,
+    pregunta: "Armemos el equipo de Marketing",
+    roles: [
       {
-        buscado:"Contenidista",
-        correcto:["Contenidista","Contenidista de Marketing"],
-        descripcion:"El/a <span class='font-bold'>CONTENIDISTA</span> nos ayudará a encontrar una estrategia comunicacional acorde a los objetivos planteados."
+        buscado: "Contenidista",
+        correcto: ["Contenidista", "Contenidista de Marketing"],
+        descripcion: "El/la <span class='font-bold'>CONTENIDISTA DE MARKETING</span> nos ayudará a realizar (ya sea diseñando o redactando) las piezas y publicaciones de redes."
       },
       {
-        buscado:"Planner",
-        correcto:["Planner","Data Analyst en Marketing","Planner de Pauta"],
-        descripcion:"El <span class='font-bold'>PLANNER</span> nos ayudará definir las estrategias digitales que se llevarán a cabo para cumplir con los objetivos de la campaña."
+        buscado: "Estratega",
+        correcto: ["Planner", "Data Analyst en Marketing", "Planner de Pauta"],
+        descripcion: "Y nuestro/a <span class='font-bold'>ESTRATEGA DE MARKETING</span> ayudará a gestionar el proyecto ya sea desde la supervisión al equipo, el planning o la administración de pauta"
       }
     ]
   },
   {
-    id:4,
-    pregunta:"Solo nos falta IT",
-    roles:[
+    id: 4,
+    pregunta: "Solo nos falta IT",
+    roles: [
       {
-        buscado:"Diseñador/a Web",
-        correcto:["Diseñador/a IT"],
-        descripcion:"El/a <span class='font-bold'>DISEÑADOR/A WEB</span> nos ayudará darle forma, función e identidad al contenido que se plasmará en el sitio web."
+        buscado: "Diseñador/a Web",
+        correcto: ["Diseñador/a IT"],
+        descripcion: "El/a <span class='font-bold'>DISEÑADOR/A WEB</span> nos ayudará darle forma, función e identidad al contenido que se plasmará en el sitio web."
       },
       {
-        buscado:"Programador",
-        correcto:["Desarrollador IT"],
-        descripcion:"El <span class='font-bold'>PROGRAMADOR</span> es quien se encargará de lograr que los códigos muestren lo planteado por la Diseñadora web."
+        buscado: "Programador",
+        correcto: ["Desarrollador IT"],
+        descripcion: "El <span class='font-bold'>PROGRAMADOR</span> es quien se encargará de lograr que los códigos muestren lo planteado por la Diseñadora web."
       }
     ]
   }
 ]
 
 export const frases = [
-  "Creíamos que iba a ser difícil, pero con este equipazo se volvió todo muy fácil",
-  "El único verdadero conflicto fue cuando nos quedamos sin yerba",
-  "Izi pizi, facilito el trabajo",
-  "Salió tan lindo todo que queremos armar un caso sobre este trabajo",
-  "Empezamos, activamos, le metimos, pusimos en común y cerramos. Un éxito",
-  "Nos dijeron que esto iba a ser un desafío, al final fue un lujo",
+  '“Creíamos que iba a ser difícil, pero con este equipazo se volvió todo muy fácil”',
+  '“El único verdadero conflicto fue cuando nos quedamos sin yerba”',
+  '“Izi pizi, facilito el trabajo”',
+  '“Salió tan lindo todo que queremos armar un caso sobre este trabajo”',
+  '“Empezamos, activamos, le metimos, pusimos en común y cerramos. Un éxito”',
+  '“Nos dijeron que esto iba a ser un desafío, al final fue un lujo”',
+  '“¡Esto es un trabajo de primera!”',
+  '“¡Una obra maestra!”',
+  '“Quedamos de cara con el resultado.”',
+  '“Un trabajo impecable.”',
+  '“No hay caracteres para describirlo.”',
+  '“Todo orgullo esta gente.”',
+  '“No quedó ni un cabo suelto.”',
+  '“Hicimos historia con esta campaña, ¡bien ahí!”',
+  '“Los días pasaron volando, estábamos muy inspirados.”',
+  '“¡Wep weeepp!”',
+  '“¡Hoy se saleee!”',
+  "El trabajo está tan bien hecho que parece que lo hizo un robot.",
+  '“DALE CAMPEEÓOONN”',
+  '“Es un trabajo tan bueno que hasta el cliente lo aprobó.”',
+  '“Gracias a este trabajo bajé 5 tallas de pantalón”',
+  '“Solo puedo aplaudir por este equipazo”',
+  '“Los amo a todos, milbesos milbesitos”',
+  '“Espero volver a encontrar trabajos tan inspiradores”',
+  '“Perdón, me emocioné, ¿cuál fue la pregunta?”'
+
 ]
