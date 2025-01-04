@@ -22,7 +22,7 @@ export default {
     },
   },
   plugins: [
-    require('tailwindcss-animated')
+    import ('tailwindcss-animated')
   ],
 }
 
